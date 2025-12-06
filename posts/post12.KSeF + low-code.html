@@ -1,1 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>KSeF и low-code: как польскому бизнесу подготовиться к e-счётам – DevLab Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Что меняет KSeF, с каких дат он становится обязательным и как low-code помогает польским компаниям внедрить e-счета в ERP и процессы без огромных затрат."
+  />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://uk.devlab.blog/img/devlab-logo.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="https://uk.devlab.blog/img/devlab-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://uk.devlab.blog/img/devlab-favicon-180.png">
+
+  <!-- Main blog styles -->
+  <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "KSeF и low-code: как польскому бизнесу подготовиться к e-счётам с минимальными затратами",
+    "description": "Обязательные сроки KSeF, суть реформы и то, как low-code помогает компаниям подключиться к e-счётам без тяжёлых и дорогих IT-проектов.",
+    "author": { "@type": "Organization", "name": "DevLab Blog" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevLab",
+      "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" }
+    },
+    "mainEntityOfPage": "https://ru.devlab.blog/posts/post12.KSeF + low-code.html",
+    "datePublished": "2025-01-02",
+    "dateModified": "2025-01-02"
+  }
+  </script>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">
+              <img src="https://uk.devlab.blog/img/devlab-logo.svg" alt="DevLab Blog логотип">
+            </div>
+            <div class="nav-meta">
+              <div class="nav-meta-title">DevLab Blog</div>
+              <div class="nav-meta-sub">Open-source ERP и автоматизация</div>
+            </div>
+          </a>
+
+          <div class="nav-group">
+            <div class="nav-links">
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
+            </div>
+            <div class="nav-lang">
+              <a href="https://en.devlab.blog/">EN</a>
+              <a href="https://pl.devlab.blog/">PL</a>
+              <a href="https://ru.devlab.blog/" class="active">RU</a>
+              <a href="https://ua.devlab.blog/">UA</a>
+            </div>
+          </div>
+
+          <div class="nav-cta">
+            <a href="/#posts" class="btn btn-outline">Читать статьи</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
+          </div>
+
+          <button class="nav-toggle" aria-label="Переключить навигацию">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main>
+      <div class="wrapper" style="padding-top:2.6rem; padding-bottom:3rem;">
+        <div class="main-grid">
+          <!-- ARTICLE -->
+          <article>
+            <div class="section-title">
+              <span>Статья</span>
+              <small><a href="/" style="text-decoration:underline;">← Ко всем статьям</a></small>
+            </div>
+
+            <header style="margin-bottom:1.4rem;">
+              <div class="post-meta">
+                <span>Регулирование · KSeF</span>
+                <span>&middot;</span>
+                <span>Около 7 мин чтения</span>
+              </div>
+
+              <h1 class="hero-title" style="font-size:1.9rem; margin-top:0.5rem;">
+                KSeF и low-code: как польскому бизнесу подготовиться к e-счётам с минимальными затратами
+              </h1>
+
+              <p class="hero-text" style="margin-top:0.5rem;">
+                Польша запускает общенациональную платформу электронных счёт-фактур KSeF. С 2026 года почти
+                все компании будут обязаны выставлять и получать структурированные XML-счета через эту систему.
+                В статье разбираем, что именно меняет KSeF и как low-code помогает пройти переход без
+                дорогих и долгих IT-проектов.
+              </p>
+
+              <figure class="post-hero">
+                <img
+                  src="https://uk.devlab.blog/img/post12.KSeF + low-code.png"
+                  alt="KSeF и low-code – визуализация перехода на e-счета"
+                  style="width:100%; max-width:760px; border-radius:18px;"
+                >
+              </figure>
+            </header>
+
+            <section class="post-content">
+              <h2>1. Что такое KSeF и почему он меняет правила игры</h2>
+              <p>
+                KSeF (Krajowy System e-Faktur) — это государственная платформа, через которую компании
+                в Польше будут выставлять, отправлять, получать и хранить структурированные электронные
+                счёт-фактуры в формате XML. Вместо PDF-файлов по e-mail документы проходят через единый
+                защищённый канал.
+              </p>
+
+              <p>Ключевые свойства KSeF:</p>
+              <ul>
+                <li>счёт формируется в структурированном XML, а не как произвольный PDF;</li>
+                <li>система автоматически проверяет обязательные поля и базовую логику;</li>
+                <li>документы хранятся централизованно в государственном архиве;</li>
+                <li>обмен происходит в едином стандартизированном формате;</li>
+                <li>обеспечиваются юридическая значимость и защита данных.</li>
+              </ul>
+
+              <p>
+                Это не «то же самое, только без бумаги», а переход к новой модели работы бухгалтерии
+                и документооборота.
+              </p>
+
+              <h2>2. Когда KSeF становится обязательным</h2>
+              <p>Сроки уже зафиксированы в законе:</p>
+              <ul>
+                <li><strong>1 февраля 2026 года</strong> — обязательный KSeF для крупных предприятий (оборот за 2024 год ≥ 200 млн PLN);</li>
+                <li><strong>1 апреля 2026 года</strong> — обязательный KSeF для всех остальных компаний: МСП, микробизнеса, плательщиков НДС и части освобождённых.</li>
+              </ul>
+              <p>
+                Отдельных «каникул» для малого бизнеса не предусмотрено. Это означает, что у компаний
+                есть ограниченное время, чтобы подготовиться технически и организационно.
+              </p>
+
+              <h2>3. Почему ранняя подготовка даёт преимущество</h2>
+              <p>Правильно выстроенный процесс работы с KSeF даёт бизнесу реальные плюсы:</p>
+              <ul>
+                <li><strong>меньше ошибок</strong> благодаря автоматической валидации данных,</li>
+                <li><strong>быстрее документооборот</strong> – счёт создаётся и попадает адресату за секунды,</li>
+                <li><strong>прозрачность</strong> – централизованное хранение упрощает проверки и аудит,</li>
+                <li><strong>стандартизация</strong> – один формат вместо набора PDF, Excel и самодельных шаблонов,</li>
+                <li><strong>надёжность</strong> – документ сложно потерять или случайно удалить.</li>
+              </ul>
+
+              <p>
+                Для компаний с большим количеством операций даже небольшая экономия времени на каждом
+                документе превращается в заметный экономический эффект.
+              </p>
+
+              <h2>4. Почему low-code — удобный инструмент для перехода на KSeF</h2>
+              <p>Чтобы полноценно работать с KSeF, компании нужно уметь:</p>
+              <ul>
+                <li>генерировать счёт в требуемом XML-формате,</li>
+                <li>автоматически отправлять его в KSeF,</li>
+                <li>обрабатывать подтверждения и ошибки,</li>
+                <li>интегрировать процесс с ERP, CRM и учётными системами,</li>
+                <li>перестроить рабочие процессы сотрудников,</li>
+                <li>обеспечить корректный архив и отчётность.</li>
+              </ul>
+
+              <p>
+                В классическом подходе это отдельный, часто дорогостоящий, IT-проект. Платформы low-code
+                позволяют пойти другим путём:
+              </p>
+
+              <ul>
+                <li><strong>быстрая интеграция</strong> – готовые коннекторы, визуальная настройка процессов,
+                  гибкие формы и экраны;</li>
+                <li><strong>снижение затрат</strong> – меньше кода, больше конфигурации; часть работы могут
+                  выполнить внутренние администраторы или бухгалтеры после краткого обучения;</li>
+                <li><strong>удобные интерфейсы</strong> – формы «создать счёт», «отправить», «проверить статус»
+                  собираются как конструктор;</li>
+                <li><strong>гибкость при изменении законодательства</strong> – если Минфин меняет схему,
+                  структура, поля и проверки обновляются за часы, а не недели;</li>
+                <li><strong>сквозная автоматизация</strong> – система сама создаёт e-счёт по событию (продажа,
+                  заказ), отправляет его в KSeF, получает ответ, записывает результат в ERP и уведомляет
+                  бухгалтерию;</li>
+                <li><strong>масштабируемость</strong> – проще подключать склад, логистику, e-commerce, банки.</li>
+              </ul>
+
+              <p>
+                Декларативные low-code-платформы, включая решения, подобные lsFusion, особенно хорошо подходят
+                для такого сценария: бизнес-процесс описывается в виде правил и метаданных, а техническая
+                интеграция с KSeF инкапсулируется в коннекторах.
+              </p>
+
+              <h2>5. Практическая ценность для польского бизнеса уже сейчас</h2>
+              <p>Компании, которые начинают подготовку заранее, получают:</p>
+              <ul>
+                <li><strong>меньшие затраты на внедрение KSeF</strong> по сравнению с «кастомной» разработкой,</li>
+                <li><strong>устойчивость к изменениям законодательства</strong> – доработки делаются в модуле
+                  low-code, а не в монолитном продукте,</li>
+                <li><strong>устойчивый, автоматизированный учёт</strong>,</li>
+                <li><strong>меньше ручной работы и ошибок</strong>,</li>
+                <li><strong>заранее сформированное преимущество</strong> – в 2026 году не придётся в авральном
+                  режиме «переезжать» на новую модель.</li>
+              </ul>
+
+              <h2>6. Итог: KSeF неизбежен, low-code делает переход управляемым</h2>
+              <p>
+                Введение e-счётов и KSeF — это не просто очередная бюрократическая реформа, а шаг к новой
+                цифровой модели бизнеса. Low-code даёт компаниям возможность:
+              </p>
+              <ul>
+                <li>подготовиться заранее,</li>
+                <li>избежать избыточных IT-затрат,</li>
+                <li>настроить автоматизацию под свои процессы,</li>
+                <li>адаптироваться к изменениям законодательства без паники,</li>
+                <li>сделать документооборот быстрее и надёжнее.</li>
+              </ul>
+              <p>
+                KSeF станет обязательным в 2026 году, но качественная подготовка начинается уже сегодня —
+                и low-code даёт один из самых рациональных путей к этому.
+              </p>
+            </section>
+
+            <footer style="margin-top:1.6rem;">
+              <div class="post-meta">
+                <span class="post-tag">KSeF</span>
+                <span class="post-tag">Low-code</span>
+                <span class="post-tag">Польша</span>
+              </div>
+            </footer>
+          </article>
+
+          <!-- SIDEBAR -->
+          <aside class="sidebar">
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">О блоге</h3>
+              <p class="sidebar-text">
+                DevLab Blog — заметки об open-source ERP, декларативных платформах и low-code:
+                как внедрять автоматизацию и соответствовать требованиям вроде KSeF без боли.
+              </p>
+            </section>
+
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">Ещё материалы</h3>
+              <ul class="sidebar-list">
+                <li><a href="/">Все статьи</a></li>
+                <li><a href="/#categories">По категориям</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт DevLab</a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="wrapper footer-grid">
+        <div>
+          <div class="footer-links">
+            <a href="/">Посты</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
+          </div>
+          <p class="footer-meta">
+            DevLab Blog – заметки об open-source ERP, low-code и автоматизации.
+          </p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; <span id="year"></span> DevLab Blog</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
