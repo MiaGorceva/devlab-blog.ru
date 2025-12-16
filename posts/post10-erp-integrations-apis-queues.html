@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>Low-Code Platforms: Principles, Benefits and Future Trends – DevLab Blog</title>
+  <title>Интеграции ERP с внешними сервисами: API, очереди и типовые ловушки – DevLab Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="What low-code platforms are, their core principles, benefits, limitations and future trends – and how they help organisations deliver software faster and more efficiently."
+    content="Как спроектировать надежные интеграции ERP с внешними системами через REST API, очереди и event-driven паттерны, избегая скрытых проблем."
   />
 
   <!-- Favicon -->
@@ -26,22 +26,22 @@
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://en.devlab.blog/posts/post10.post-integrations.html"
+      "@id": "https://ru.devlab.blog/posts/post10-erp-integrations-apis-queues.html"
     },
-    "headline": "Low-Code Platforms: Principles, Benefits and Future Trends",
-    "description": "An overview of low-code fundamentals: core principles, advantages, challenges and strategic trends for the next few years.",
+    "headline": "Интеграции ERP с внешними сервисами: API, очереди и типовые ловушки",
+    "description": "Как проектировать надежные интеграции ERP через REST API, очереди и event-driven паттерны и избегать скрытых проблем.",
     "author": { "@type": "Organization", "name": "DevLab Blog" },
     "publisher": {
       "@type": "Organization",
       "name": "DevLab",
       "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" }
     },
-    "datePublished": "2025-01-25",
-    "dateModified": "2025-01-25"
+    "datePublished": "2025-05-22",
+    "dateModified": "2025-05-22"
   }
   </script>
-  <link rel="canonical" href="https://en.devlab.blog/posts/post10-erp-integrations-apis-queues.html">
-  <link rel="canonical" href="https://en.devlab.blog/posts/post10-erp-integrations-apis-queues.html">
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post10-erp-integrations-apis-queues.html">
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post10-erp-integrations-apis-queues.html">
     </head>
 <body class="post-page">
   <div class="page">
@@ -55,31 +55,31 @@
             </div>
             <div class="nav-meta">
               <div class="nav-meta-title">DevLab Blog</div>
-              <div class="nav-meta-sub">Open-source ERP &amp; automation notes</div>
+              <div class="nav-meta-sub">Заметки об open-source ERP и автоматизации</div>
             </div>
           </a>
 
           <div class="nav-group">
             <div class="nav-links">
-              <a href="/#posts">Posts</a>
-              <a href="/#categories">Categories</a>
-              <a href="/#about">About</a>
-              <a href="https://devlab.blog" target="_blank" rel="noopener">Main site</a>
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
             </div>
             <div class="nav-lang">
-              <a href="https://en.devlab.blog/" class="active">EN</a>
+              <a href="https://en.devlab.blog/">EN</a>
               <a href="https://pl.devlab.blog/">PL</a>
-              <a href="https://ru.devlab.blog/">RU</a>
+              <a href="/" class="active">RU</a>
               <a href="https://uk.devlab.blog/">UA</a>
             </div>
           </div>
 
           <div class="nav-cta">
-            <a href="/#posts" class="btn btn-outline">Browse posts</a>
-            <a href="/#about" class="btn btn-primary">What is this?</a>
+            <a href="/#posts" class="btn btn-outline">Просмотреть статьи</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
           </div>
 
-          <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+          <button class="nav-toggle" aria-label="Переключить навигацию">☰</button>
         </nav>
       </div>
     </header>
@@ -91,62 +91,60 @@
           <!-- ARTICLE -->
                 <article>
             <div class="section-title">
-                <span>Article</span>
-                <small><a href="/">← Back to all posts</a></small>
+                <span>Статья</span>
+                <small><a href="/">← Вернуться ко всем статьям</a></small>
             </div>
 
             <header>
                 <div class="post-meta">
-                <span>Integrations</span>
+                <span>Интеграции</span>
                 <span>&middot;</span>
-                <span>Approx. 7 min read</span>
+                <span>Примерно 7 мин чтения</span>
                 <span>&middot;</span>
-                <span>Architecture</span>
+                <span>Архитектура</span>
                 </div>
 
                 <h1 class="hero-title">
-                Connecting ERP with external services: APIs, queues and common integration traps
+                Интеграции ERP с внешними сервисами: API, очереди и типовые ловушки
                 </h1>
 
                 <p class="hero-text">
-                Modern ERPs rarely live in isolation. Payments, WMS, CRM, BI tools and custom
-                microservices must exchange data continuously. This article outlines how to design
-                reliable integrations using REST APIs, message queues and event-driven patterns — and
-                how to avoid hidden traps in the process.
+                Современные ERP редко живут изолированно. Платежи, WMS, CRM, BI и кастомные микросервисы должны постоянно
+                обмениваться данными. В статье — как строить надежные интеграции через REST API, очереди и event-driven
+                подходы и как избежать скрытых ловушек.
                 </p>
 
                 <figure class="post-hero">
                 <img src="https://uk.devlab.blog/img/post10-erp-integrations-apis-queues.webp"
-                    alt="ERP integration architecture">
+                    alt="Архитектура интеграции ERP">
                 </figure>
             </header>
 
             <section class="post-content">
 
-                <h2>1. Why ERP integrations matter more than ever</h2>
+                <h2>1. Почему интеграции ERP важны как никогда</h2>
                 <p>
-                ERP systems increasingly serve as the operational core while specialised tools handle
-                CRM, finance, logistics or analytics. This decentralisation increases flexibility but
-                requires stable integrations to avoid data drift, double entries and inconsistent
-                workflows.
+                ERP всё чаще играет роль операционного ядра, а специализированные инструменты закрывают CRM, финансы,
+                логистику или аналитику. Такая децентрализация повышает гибкость, но требует устойчивых интеграций, чтобы
+                избежать рассинхронизации данных, дублей и разрывов процессов.
                 </p>
 
-                <h2>2. REST APIs: the default integration method</h2>
+                <h2>2. REST API: метод интеграции по умолчанию</h2>
                 <p>
-                Most ERPs expose REST endpoints for CRUD operations. They are perfect for:
+                Большинство ERP публикуют REST эндпоинты для CRUD. Они подходят для:
                 </p>
                 <ul>
-                <li>customer updates,</li>
-                <li>status synchronisation,</li>
-                <li>document creation (orders, invoices, shipments),</li>
-                <li>reference data imports.</li>
+                <li>обновлений клиентов,</li>
+                <li>синхронизации статусов,</li>
+                <li>создания документов (заказы, счета, отгрузки),</li>
+                <li>загрузки справочных данных.</li>
                 </ul>
 
-                <h3>Common pitfalls</h3>
+                <h3>Частые ошибки</h3>
                 <ul>
-                <li><strong>Missing idempotency</strong> — duplicate orders on retry.</li>
-                <li><strong>Rate limits</strong> — batch operations overwhelm the ERP.</li>
-                <li><strong>Timeouts</strong> — long-running business rules block API calls.</li>
+                <li><strong>Нет идемпотентности</strong> — дубли заказов при ретраях.</li>
+                <li><strong>Лимиты запросов</strong> — пакетные операции перегружают ERP.</li>
+                <li><strong>Таймауты</strong> — долгие бизнес-правила блокируют API вызовы.</li>
                 </ul>
 
                 <pre><code>
@@ -162,10 +160,10 @@
             }
                 </code></pre>
 
-                <h2>3. Message queues: solving reliability and scalability</h2>
+                <h2>3. Очереди сообщений: про надежность и масштабирование</h2>
                 <p>
-                Queues (RabbitMQ, Kafka, NATS, AWS SQS) help decouple ERP from external services.
-                Instead of sending data synchronously, ERP emits events:
+                Очереди (RabbitMQ, Kafka, NATS, AWS SQS) развязывают ERP и внешние сервисы. Вместо синхронной отправки ERP
+                публикует события:
                 </p>
                 <ul>
                 <li><code>order.created</code></li>
@@ -174,56 +172,54 @@
                 </ul>
 
                 <p>
-                Consumers process them at their own speed — perfect for high-load WMS, payments or BI
-                ingestion.
+                Консьюмеры обрабатывают их в своем темпе — идеально для нагруженных WMS, платежей или BI-инжеста.
                 </p>
 
-                <h3>Integration traps</h3>
+                <h3>Ловушки интеграций</h3>
                 <ul>
-                <li><strong>No dead-letter queues</strong> → messages disappear silently.</li>
-                <li><strong>Improper partitions</strong> → inconsistent event order.</li>
-                <li><strong>Huge payloads</strong> → queues not designed for large documents.</li>
+                <li><strong>Нет dead-letter очередей</strong> → сообщения теряются незаметно.</li>
+                <li><strong>Неправильные партиции</strong> → нарушается порядок событий.</li>
+                <li><strong>Слишком большие payload</strong> → очереди не рассчитаны на крупные документы.</li>
                 </ul>
 
-                <h2>4. API + queue hybrid architecture (recommended)</h2>
+                <h2>4. Гибрид API + очередь (рекомендуется)</h2>
                 <p>
-                The industry trend is hybrid: use APIs for commands and queues for events.
+                Тренд отрасли — гибрид: API для команд и очереди для событий.
                 </p>
 
                 <pre><code>
             Client → (API) → ERP → (Events) → Queue → Services
                 </code></pre>
 
-                <p>Benefits:</p>
+                <p>Преимущества:</p>
                 <ul>
-                <li>fast writes through API,</li>
-                <li>reliable async propagation through events,</li>
-                <li>natural scaling for BI, WMS, CRM.</li>
+                <li>быстрые записи через API,</li>
+                <li>надежная асинхронная доставка через события,</li>
+                <li>естественное масштабирование для BI, WMS, CRM.</li>
                 </ul>
 
-                <h2>5. Observability: the often forgotten layer</h2>
+                <h2>5. Наблюдаемость: забытый слой</h2>
                 <p>
-                Integrations fail silently unless monitored. A healthy integration stack includes:
+                Интеграции часто падают тихо. Здоровый стек включает:
                 </p>
                 <ul>
-                <li>structured logs,</li>
-                <li>message tracing IDs,</li>
-                <li>dashboards for throughput, failures, retries, queue size.</li>
+                <li>структурированные логи,</li>
+                <li>trace ID для сообщений,</li>
+                <li>дашборды по throughput, ошибкам, ретраям, размеру очередей.</li>
                 </ul>
 
-                <h2>6. Where open-source ERP fits</h2>
+                <h2>6. Роль open-source ERP</h2>
                 <p>
-                Open-source ERP systems such as <strong>ERPNext</strong> and <strong>Odoo</strong>
-                provide flexible APIs and event hooks. Declarative platforms like
-                <strong>lsFusion</strong> offer an additional advantage — predictable behaviour,
-                automatic transaction boundaries and easy event emission via declarative rules.
+                Open-source ERP вроде <strong>ERPNext</strong> и <strong>Odoo</strong> дают гибкие API и event hooks. Декларативные
+                платформы вроде <strong>lsFusion</strong> добавляют плюс — предсказуемое поведение, автоматические границы транзакций
+                и простая генерация событий через декларативные правила.
                 </p>
 
-                <h2>Conclusion</h2>
+                <h2>Вывод</h2>
                 <p>
-                Integrating ERP is not simply about connecting endpoints — it is about designing
-                predictable and observable workflows. A balanced combination of APIs, queues and
-                declarative logic ensures reliability while keeping the architecture future-proof.
+                Интеграция ERP — это не просто соединить эндпоинты, а спроектировать предсказуемые и наблюдаемые процессы.
+                Сбалансированная комбинация API, очередей и декларативной логики дает надежность и сохраняет архитектуру
+                готовой к будущим изменениям.
                 </p>
 
             </section>
@@ -231,40 +227,40 @@
             <footer class="post-footer-extended">
             <div class="post-footer-meta">
               <div class="post-meta-tags">
-                <span class="post-tag">Integrations</span>
+                <span class="post-tag">Интеграции</span>
                 <span class="post-tag">ERP</span>
-                <span class="post-tag">APIs &amp; queues</span>
+                <span class="post-tag">API и очереди</span>
                 <span class="post-tag">Event-driven</span>
-                <span class="post-tag">Architecture</span>
+                <span class="post-tag">Архитектура</span>
               </div>
 
               <div class="post-meta-secondary">
-                <span>Published: 22 May 2025</span>
+                <span>Опубликовано: 22 май 2025</span>
                 <span>·</span>
-                <span>Approx. 5–6 min read</span>
+                <span>Примерно 5–6 мин чтения</span>
                 <span>·</span>
-                <span class="post-views">Views: <span class="count">—</span></span>
+                <span class="post-views">Просмотры: <span class="count">—</span></span>
               </div>
             </div>
           </footer>
 
             <section class="sidebar-block">
             <p class="sidebar-text">
-              No spam – just occasional notes on ERP design, automation experiments and new posts.
+              Без спама – только периодические заметки о дизайне ERP, экспериментах с автоматизацией и новых статьях.
             </p>
             <form class="newsletter-form"
                   action="https://formsubmit.co/info@devlab.blog"
                   method="POST">
-              <input type="hidden" name="_next" value="https://en.devlab.blog/thank-you.html">
+              <input type="hidden" name="_next" value="https://ru.devlab.blog/thank-you.html">
               <input type="hidden" name="_captcha" value="false">
               <input type="text" name="_honey" style="display:none">
 
-              <input type="email" name="email" class="field" placeholder="Your email address" required>
-              <button class="btn btn-primary" type="submit">Subscribe</button>
+              <input type="email" name="email" class="field" placeholder="Ваш email адрес" required>
+              <button class="btn btn-primary" type="submit">Подписаться</button>
 
               <p class="newsletter-note">
-                You will receive a confirmation email.<br>
-                Powered securely via FormSubmit.
+                Вы получите письмо с подтверждением.<br>
+                Безопасно через FormSubmit.
               </p>
             </form>
           </section>
@@ -273,22 +269,22 @@
             <!-- SIDEBAR -->
           <aside class="sidebar">
             <section class="sidebar-block">
-              <h3 class="sidebar-title">About this blog</h3>
+              <h3 class="sidebar-title">О блоге</h3>
               <p class="sidebar-text">
-                DevLab Blog explores open-source ERP, modular architectures and low-code automation –
-                with a focus on practical, real-world implementations.
+                DevLab Blog исследует open-source ERP, модульные архитектуры и low-code автоматизацию –
+                с фокусом на практических реализациях.
               </p>
             </section>
 
             <section class="sidebar-block">
-              <h3 class="sidebar-title">More to explore</h3>
+              <h3 class="sidebar-title">Больше для изучения</h3>
               <p class="sidebar-text">
-                Go back to the main page to see other posts or browse by category:
+                Вернитесь на главную, чтобы увидеть другие статьи или просмотреть по категориям:
               </p>
               <ul>
-                <li><a href="/">All blog posts</a></li>
-                <li><a href="/#categories">Browse by category</a></li>
-                <li><a href="https://devlab.blog" target="_blank" rel="noopener">DevLab main site</a></li>
+                <li><a href="/">Все статьи блога</a></li>
+                <li><a href="/#categories">Просмотр по категориям</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт DevLab</a></li>
               </ul>
             </section>
           </aside>
@@ -301,13 +297,13 @@
       <div class="wrapper footer-grid">
         <div>
           <div class="footer-links">
-            <a href="/">Posts</a>
-            <a href="/#categories">Categories</a>
-            <a href="/#about">About</a>
-            <a href="https://devlab.blog" target="_blank" rel="noopener">Main site</a>
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
           </div>
           <p class="footer-meta">
-            DevLab Blog – notes on open-source ERP, modular architectures and automation experiments.
+            DevLab Blog – заметки об open-source ERP, модульных архитектурах и экспериментах с автоматизацией.
           </p>
         </div>
         <div class="footer-meta">
@@ -323,4 +319,3 @@
   </script>
 </body>
 </html>
-

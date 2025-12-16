@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>A New Stage in Software Development – Why Low-Code Is Accelerating in 2025</title>
+  <title>Паттерны low-code для расширения ERP без ломки ядра – DevLab Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="How low-code is changing software development: market growth, low-code vs no-code, how low-code development works, key advantages and what kinds of applications you can build."
+    content="Как безопасно расширять ERP с помощью low-code: workflow-слой, side-car приложения, event-driven микрорасширения, отчетность и ограничения, чтобы не сломать ядро."
   />
 
   <!-- Favicon -->
@@ -27,10 +26,10 @@
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://en.devlab.blog/posts/post11.Low-code patterns for extending an ERP.html"
+      "@id": "https://ru.devlab.blog/posts/post11-low-code-patterns-extending-erp.html"
     },
-    "headline": "A New Stage in Software Development – Why Low-Code Is Accelerating in 2025",
-    "description": "Market growth of low-code, differences between low-code and no-code, how low-code development works, key advantages and examples of real applications.",
+    "headline": "Паттерны low-code для расширения ERP без ломки ядра",
+    "description": "Workflow-слой, side-car приложения, event-driven микрорасширения, отчетность и ограничения: как расширять ERP low-code без риска для ядра.",
     "author": { "@type": "Organization", "name": "DevLab Blog" },
     "publisher": {
       "@type": "Organization",
@@ -41,8 +40,8 @@
     "dateModified": "2025-01-20"
   }
   </script>
-  <link rel="canonical" href="https://en.devlab.blog/posts/post11-low-code-patterns-extending-erp.html">
-  <link rel="canonical" href="https://en.devlab.blog/posts/post11-low-code-patterns-extending-erp.html">
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post11-low-code-patterns-extending-erp.html">
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post11-low-code-patterns-extending-erp.html">
     </head>
 <body class="post-page">
   <div class="page">
@@ -56,31 +55,31 @@
             </div>
             <div class="nav-meta">
               <div class="nav-meta-title">DevLab Blog</div>
-              <div class="nav-meta-sub">Open-source ERP &amp; automation notes</div>
+              <div class="nav-meta-sub">Заметки об open-source ERP и автоматизации</div>
             </div>
           </a>
 
           <div class="nav-group">
             <div class="nav-links">
-              <a href="/#posts">Posts</a>
-              <a href="/#categories">Categories</a>
-              <a href="/#about">About</a>
-              <a href="https://devlab.blog" target="_blank" rel="noopener">Main site</a>
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
             </div>
             <div class="nav-lang">
-              <a href="https://en.devlab.blog/" class="active">EN</a>
+              <a href="https://en.devlab.blog/">EN</a>
               <a href="https://pl.devlab.blog/">PL</a>
-              <a href="https://ru.devlab.blog/">RU</a>
+              <a href="/" class="active">RU</a>
               <a href="https://uk.devlab.blog/">UA</a>
             </div>
           </div>
 
           <div class="nav-cta">
-            <a href="/#posts" class="btn btn-outline">Browse posts</a>
-            <a href="/#about" class="btn btn-primary">What is this?</a>
+            <a href="/#posts" class="btn btn-outline">Просмотреть статьи</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
           </div>
 
-          <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+          <button class="nav-toggle" aria-label="Переключить навигацию">☰</button>
         </nav>
       </div>
     </header>
@@ -92,114 +91,106 @@
           <!-- ARTICLE -->
            <article>
             <div class="section-title">
-                <span>Article</span>
-                <small><a href="/">← Back to all posts</a></small>
+                <span>Статья</span>
+                <small><a href="/">← Вернуться ко всем статьям</a></small>
             </div>
 
             <header>
                 <div class="post-meta">
                 <span>Low-code & ERP</span>
                 <span>&middot;</span>
-                <span>Approx. 6 min read</span>
+                <span>Примерно 6 мин чтения</span>
                 <span>&middot;</span>
-                <span>Patterns &amp; architecture</span>
+                <span>Паттерны и архитектура</span>
                 </div>
 
                 <h1 class="hero-title">
-                Low-code patterns for extending an ERP without breaking the core
+                Паттерны low-code для расширения ERP без ломки ядра
                 </h1>
 
                 <p class="hero-text">
-                Most ERP systems were not designed for continuous experimentation. At the same time, business
-                teams constantly ask for new workflows, integrations and small apps. Low-code extensions let
-                you deliver those changes without turning the ERP core into an unmaintainable patchwork.
-                This article outlines several practical patterns that work well in open-source and
-                declarative stacks, including platforms like lsFusion.
+                Большинство ERP не рассчитаны на постоянные эксперименты, а бизнес-команды просят новые workflow, интеграции
+                и небольшие приложения. Low-code расширения позволяют доставлять изменения, не превращая ядро ERP в хаос.
+                Здесь — практические паттерны для open-source и декларативных стеков, включая платформы вроде lsFusion.
                 </p>
 
                 <figure class="post-hero">
                 <img
                     src="https://uk.devlab.blog/img/post11-low-code-extend-erp.webp"
-                    alt="Low-code modules surrounding an ERP core"
+                    alt="Low-code модули вокруг ядра ERP"
                 >
                 </figure>
             </header>
 
             <section class="post-content">
 
-                <h2>1. Why extend with low-code instead of customising the core</h2>
+                <h2>1. Почему расширять через low-code, а не менять ядро</h2>
                 <p>
-                Directly changing the ERP core often leads to upgrade pain, vendor lock-in and fragile
-                business logic that nobody wants to touch. Low-code extensions offer an alternative: keep
-                the ERP responsible for authoritative data and core accounting rules, and move
-                experimentation and fast-changing processes into a more flexible layer around it.
+                Прямые правки ядра ERP ведут к боли при обновлениях, vendor lock-in и хрупкой логике. Low-code расширения —
+                альтернатива: ядро хранит авторитетные данные и учетные правила, а эксперименты и быстро меняющиеся процессы
+                уходят во внешний гибкий слой.
                 </p>
 
-                <p>Typical goals for low-code extensions:</p>
+                <p>Типичные цели low-code расширений:</p>
                 <ul>
-                <li>add new workflows without modifying core tables or transactions,</li>
-                <li>experiment with UX and side processes safely,</li>
-                <li>integrate external services without wiring them directly into the ERP engine,</li>
-                <li>let “citizen developers” build tools under clear guardrails.</li>
+                <li>добавлять workflow без правок базовых таблиц и транзакций,</li>
+                <li>безопасно экспериментировать с UX и боковыми процессами,</li>
+                <li>интегрировать внешние сервисы без прямого «вшивания» в ядро ERP,</li>
+                <li>давать citizen developers (бизнес-пользователи, создающие решения сами) строить инструменты с ограничениями.</li>
                 </ul>
 
-                <h2>2. Pattern #1 – Workflow layer on top of ERP</h2>
+                <h2>2. Паттерн #1 — Workflow-слой над ERP</h2>
                 <p>
-                The simplest pattern: keep the ERP as the system of record, but orchestrate approvals and
-                extra steps in a low-code workflow engine. The workflow calls ERP APIs to read or update
-                data and may store only minimal state of its own.
+                Простой вариант: ERP остается системой записи, а approvals и доп. шаги оркестрируются в low-code движке.
+                Workflow дергает API ERP для чтения/обновления и хранит минимум собственного состояния.
                 </p>
 
-                <p>Good candidates:</p>
+                <p>Хорошие кандидаты:</p>
                 <ul>
-                <li>purchase request approvals before a purchase order appears in ERP,</li>
-                <li>exception handling around credit limits, pricing overrides or discounts,</li>
-                <li>manual checks for compliance, quality, or risk.</li>
-                </ul>
-
-                <p>
-                Declarative platforms like <strong>lsFusion</strong> fit well here: they allow you to define
-                forms, states and rules declaratively while calling ERP APIs or stored procedures when a
-                workflow step completes.
-                </p>
-
-                <h2>3. Pattern #2 – Side-car apps for complex processes</h2>
-                <p>
-                Sometimes a process is too domain-specific or fast-changing to live comfortably inside the
-                ERP. In that case, you can build a separate low-code application — a <strong>side-car</strong>
-                — that uses ERP as a data source and sink.
-                </p>
-
-                <p>Typical examples:</p>
-                <ul>
-                <li>production dispatching and shop-floor UIs,</li>
-                <li>specialised project or service management tools,</li>
-                <li>configurators for complex products.</li>
+                <li>утверждение заявок на закупку до создания заказа в ERP,</li>
+                <li>обработка исключений: кредитные лимиты, ценовые оверрайды, скидки,</li>
+                <li>ручные проверки на комплаенс, качество, риски.</li>
                 </ul>
 
                 <p>
-                The side-car app reads reference data from ERP (customers, products, prices) and writes back
-                only final transactions (orders, time sheets, production results). This keeps the ERP schema
-                clean while allowing the side-car to evolve quickly.
+                Декларативные платформы вроде <strong>lsFusion</strong> удобны: формы, состояния и правила задаются декларативно,
+                а при завершении шага вызываются API или процедуры ERP.
                 </p>
 
-                <h2>4. Pattern #3 – Event-driven micro-extensions</h2>
+                <h2>3. Паттерн #2 — Side-car приложения для сложных процессов</h2>
                 <p>
-                In an event-driven architecture, the ERP emits events such as <code>order.created</code>,
-                <code>invoice.posted</code> or <code>inventory.below_threshold</code>. Low-code components
-                subscribe to these events and execute small, well-defined actions.
+                Если процесс слишком специфичен или быстро меняется, его можно вынести в отдельное low-code приложение
+                (<strong>side-car</strong>), использующее ERP как источник и приемник данных.
                 </p>
 
-                <p>Examples of micro-extensions:</p>
+                <p>Примеры:</p>
                 <ul>
-                <li>sending notifications to chat tools or email,</li>
-                <li>creating follow-up tasks in a ticketing system,</li>
-                <li>pushing aggregated data into analytics or dashboards,</li>
-                <li>triggering automated document generation.</li>
+                <li>диспетчеризация производства и UI для цеха,</li>
+                <li>специализированные инструменты для проектов или сервиса,</li>
+                <li>конфигураторы сложных продуктов.</li>
                 </ul>
 
                 <p>
-                In declarative platforms you typically describe such reactions as rules:
+                Side-car читает справочники (клиенты, товары, цены) из ERP и пишет обратно только финальные транзакции
+                (заказы, табели, результаты производства). Схема ERP остается чистой, а side-car быстро эволюционирует.
+                </p>
+
+                <h2>4. Паттерн #3 — Event-driven микрорасширения</h2>
+                <p>
+                В event-driven архитектуре ERP публикует события <code>order.created</code>, <code>invoice.posted</code>,
+                <code>inventory.below_threshold</code>. Low-code компоненты подписываются и выполняют маленькие действия.
+                </p>
+
+                <p>Примеры микрорасширений:</p>
+                <ul>
+                <li>уведомления в чат или email,</li>
+                <li>создание задач в тикет-системе,</li>
+                <li>выгрузка агрегатов в аналитику/дашборды,</li>
+                <li>триггер генерации документов.</li>
+                </ul>
+
+                <p>
+                В декларативных платформах реакции описываются правилами:
                 </p>
 
             <pre><code>EVENT orderCreated WHEN Orders.status = 'Approved' DO
@@ -208,51 +199,48 @@
             </code></pre>
 
                 <p>
-                This keeps the extension logic readable and easier to audit than ad-hoc scripts glued on
-                top of the ERP.
+                Так логика расширений остается читаемой и аудируемой, в отличие от набора случайных скриптов.
                 </p>
 
-                <h2>5. Pattern #4 – Low-code reporting and “operational BI”</h2>
+                <h2>5. Паттерн #4 — Low-code отчеты и «операционный BI»</h2>
                 <p>
-                Many ERP users need quick ad-hoc reports with filters, groupings and calculated fields.
-                Instead of building every report in the ERP core, you can expose read-only views and let a
-                low-code reporting layer handle visualisation and slicing.
+                Пользователям нужны быстрые ad-hoc отчеты с фильтрами, группировками и вычисляемыми полями. Вместо
+                добавления каждого отчета в ядро ERP можно дать read-only представления и вынести визуализацию в low-code слой.
                 </p>
 
-                <p>Benefits:</p>
+                <p>Плюсы:</p>
                 <ul>
-                <li>business users can iterate on reports without deployments,</li>
-                <li>read-only access reduces the risk of accidental data changes,</li>
-                <li>aggregation logic can evolve faster than the ERP schema.</li>
+                <li>бизнес сам итеративно правит отчеты без деплоев,</li>
+                <li>read-only доступ снижает риск случайных изменений данных,</li>
+                <li>логика агрегаций эволюционирует быстрее, чем схема ERP.</li>
                 </ul>
 
-                <h2>6. Guardrails: how not to break the ERP</h2>
-                <p>Low-code power comes with responsibility. A few rules help keep the core safe:</p>
+                <h2>6. Ограничители: как не сломать ERP</h2>
+                <p>Сила low-code требует дисциплины. Несколько правил:</p>
                 <ul>
-                <li><strong>Single source of truth.</strong> core financial and inventory data live only in ERP.</li>
-                <li><strong>Clear ownership.</strong> each workflow knows which system is responsible for which part.</li>
-                <li><strong>Versioning.</strong> low-code apps should be versioned and tested just like code.</li>
-                <li><strong>Access control.</strong> reuse ERP roles and permissions where possible.</li>
-                <li><strong>Monitoring.</strong> log and trace low-code actions that touch ERP data.</li>
+                <li><strong>Единый источник истины.</strong> Финансовые и складские данные живут в ERP.</li>
+                <li><strong>Понятная ответственность.</strong> Каждый workflow знает, какая система за что отвечает.</li>
+                <li><strong>Версионирование.</strong> Low-code приложения версионируются и тестируются как код.</li>
+                <li><strong>Доступы.</strong> По возможности наследовать роли и права ERP.</li>
+                <li><strong>Мониторинг.</strong> Логировать и трейсить действия low-code, касающиеся ERP.
                 </ul>
 
-                <h2>7. Where low-code is a bad idea</h2>
+                <h2>7. Где low-code неуместен</h2>
                 <p>
-                Some areas still belong strictly to the ERP core or to traditional development:
+                Есть зоны, которые остаются в ядре ERP или в классической разработке:
                 </p>
                 <ul>
-                <li>posting logic for accounting and tax,</li>
-                <li>regulatory reports with strict formats,</li>
-                <li>performance-critical batch processes over huge datasets,</li>
-                <li>security-sensitive modules handling secrets or compliance-critical data.</li>
+                <li>проводки бухучета и налогов,</li>
+                <li>регуляторная отчетность со строгими форматами,</li>
+                <li>производительные batch-процессы на больших данных,</li>
+                <li>модули безопасности с секретами или критичными данными.</li>
                 </ul>
 
-                <h2>Conclusion</h2>
+                <h2>Итог</h2>
                 <p>
-                Low-code is not a replacement for ERP — it is a way to extend and protect it at the same
-                time. By using workflow layers, side-car apps, event-driven micro-extensions and
-                low-code reporting, organisations can experiment and iterate quickly while keeping the ERP
-                core stable, upgradeable and clean.
+                Low-code не заменяет ERP — он помогает расширять и защищать его ядро. Workflow-слой, side-car приложения,
+                event-driven микрорасширения и low-code отчеты дают возможность быстро экспериментировать, сохраняя ядро ERP
+                стабильным и чистым.
                 </p>
             </section>
 
@@ -260,18 +248,18 @@
               <div class="post-footer-meta">
                 <div class="post-meta-tags">
                   <span class="post-tag">Low-code</span>
-                  <span class="post-tag">ERP extensions</span>
-                  <span class="post-tag">Architecture</span>
-                  <span class="post-tag">Side-car apps</span>
-                  <span class="post-tag">Automation</span>
+                  <span class="post-tag">Расширение ERP</span>
+                  <span class="post-tag">Архитектура</span>
+                  <span class="post-tag">Side-car приложения</span>
+                  <span class="post-tag">Автоматизация</span>
                 </div>
 
                 <div class="post-meta-secondary">
-                  <span>Published: 01 June 2025</span>
+                  <span>Опубликовано: 01 июн 2025</span>
                   <span>·</span>
-                  <span>Approx. 5–6 min read</span>
+                  <span>Примерно 5–6 мин чтения</span>
                   <span>·</span>
-                  <span class="post-views">Views: <span class="count">—</span></span>
+                  <span class="post-views">Просмотры: <span class="count">—</span></span>
                 </div>
               </div>
             </footer>
@@ -279,50 +267,48 @@
 
             <section class="sidebar-block">
             <p class="sidebar-text">
-              No spam – just occasional notes on ERP design, automation experiments and new posts.
+              Без спама – только периодические заметки о дизайне ERP, экспериментах с автоматизацией и новых статьях.
             </p>
             <form class="newsletter-form"
                   action="https://formsubmit.co/info@devlab.blog"
                   method="POST">
-              <input type="hidden" name="_next" value="https://en.devlab.blog/thank-you.html">
+              <input type="hidden" name="_next" value="https://ru.devlab.blog/thank-you.html">
               <input type="hidden" name="_captcha" value="false">
               <input type="text" name="_honey" style="display:none">
 
-              <input type="email" name="email" class="field" placeholder="Your email address" required>
-              <button class="btn btn-primary" type="submit">Subscribe</button>
+              <input type="email" name="email" class="field" placeholder="Ваш email адрес" required>
+              <button class="btn btn-primary" type="submit">Подписаться</button>
 
               <p class="newsletter-note">
-                You will receive a confirmation email.<br>
-                Powered securely via FormSubmit.
+                Вы получите письмо с подтверждением.<br>
+                Безопасно через FormSubmit.
               </p>
             </form>
           </section>
 
-            
             </article>
 
              <!-- SIDEBAR -->
           <aside class="sidebar">
             <section class="sidebar-block">
-              <h3 class="sidebar-title">About this blog</h3>
+              <h3 class="sidebar-title">О блоге</h3>
               <p class="sidebar-text">
-                DevLab Blog focuses on open-source ERP concepts, modular business systems and low-code
-                automation. We write about architectural patterns, integration strategies and real-world
-                implementation lessons.
+                DevLab Blog пишет о концепциях open-source ERP, модульных бизнес-системах и low-code автоматизации:
+                паттерны архитектуры, интеграции и практические уроки внедрений.
               </p>
             </section>
 
             <section class="sidebar-block">
-              <h3 class="sidebar-title">More to explore</h3>
+              <h3 class="sidebar-title">Больше для изучения</h3>
               <p class="sidebar-text">
-                Go back to the main page to see other posts, or browse by category:
+                Вернитесь на главную, чтобы увидеть другие статьи, или просмотрите по категории:
               </p>
               <ul
                
               >
-                <li><a href="/">All blog posts</a></li>
-                <li><a href="/#categories">Browse by category</a></li>
-                <li><a href="https://devlab.blog" target="_blank" rel="noopener">DevLab main site</a></li>
+                <li><a href="/">Все статьи блога</a></li>
+                <li><a href="/#categories">Просмотр по категориям</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт DevLab</a></li>
               </ul>
             </section>
           </aside>
@@ -335,13 +321,13 @@
       <div class="wrapper footer-grid">
         <div>
           <div class="footer-links">
-            <a href="/">Posts</a>
-            <a href="/#categories">Categories</a>
-            <a href="/#about">About</a>
-            <a href="https://devlab.blog" target="_blank" rel="noopener">Main site</a>
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener">Основной сайт</a>
           </div>
           <p class="footer-meta">
-            DevLab Blog – notes on open-source ERP, modular architectures and automation experiments.
+            DevLab Blog – заметки об open-source ERP, модульных архитектурах и экспериментах с автоматизацией.
           </p>
         </div>
         <div class="footer-meta">
