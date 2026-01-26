@@ -139,43 +139,11 @@
                 ERP, которая не превращается в дорогой тормоз:  </h1>
                 <h2>анализ архитектуры 1С / SAP / Dynamics / Odoo</h2>
              
-
-              <p class="hero-text">
-                На старте почти любая ERP выглядит “нормально”. Проблемы начинаются позже — когда бизнес меняет правила:
-                скидки, согласования, каналы продаж, договоры, модели прибыли. Этот материал — разбор идеи из статьи на Хабре
-                и проверка её на практике: где и почему ERP становится дорогой, и как заметить это до того, как вы “влипли”.
-              </p>
-
-              <figure class="post-hero">
-                <img
-                  src="https://uk.devlab.blog/img/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.webp"
-                  alt="ERP без боли от изменений: правила бизнеса, контроль стоимости изменений, предсказуемая эволюция системы"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </figure>
-            </header>
-
-            <section class="post-content">
-              <div class="callout">
-                <strong>Контекст: откуда идея</strong>
                 <p>
-                  Этот материал — независимый разбор тезисов из статьи на Хабре
-                  <a href="https://habr.com/ru/companies/lsfusion/articles/544982/" target="_blank" rel="noopener noreferrer">
-                    “ERP, которая не ломается от изменений” ↗
-                  </a>.
-                  Мы сознательно смотрим шире: не “какая система лучше”, а <strong>почему стоимость изменений почти всегда всплывает после запуска</strong>
-                  и как это проявляется в реальных стэках (1С / SAP / Dynamics / Odoo и др.).
-                </p>
-              </div>
-
-              <h2 id="intro">Почему хорошая ERP внезапно превращается в дорогой тормоз</h2>
-              <p>
                 Если на запуске ERP “едет” — это ещё не успех. Это скорее стандартная ситуация.
                 На старте процессы часто подгоняют под систему, команда мотивирована, нагрузка прогнозируемая,
                 а часть неудобных правил откладывают “на потом”.
               </p>
-
               <p>
                 Настоящая проверка начинается позже — когда бизнес делает то, ради чего ERP вообще нужна:
                 <strong>меняет правила управления компанией без потери контроля</strong>
@@ -190,35 +158,33 @@
                 <li>пересборка интеграций (CRM, WMS, маркетплейсы, BI).</li>
               </ul>
 
-              <div class="callout">
-                <strong>Ключевой тезис из исходной статьи</strong>
-                <p>
-                  Проблема редко в интерфейсе. ERP становится дорогой, когда
-                  <strong>правила бизнеса спрятаны в “случайных местах”</strong>:
-                  кусках кода, исключениях, обработчиках, интеграционных скриптах и ручных обходах.
-                  Именно это и означает “ломается от изменений” — ломается управляемость.
-                  <a href="https://habr.com/ru/companies/lsfusion/articles/544982/" target="_blank" rel="noopener noreferrer">↗</a>
-                </p>
-              </div>
+              <figure class="post-hero">
+                <img
+                  src="https://uk.devlab.blog/img/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.webp"
+                  alt="ERP без боли от изменений: правила бизнеса, контроль стоимости изменений, предсказуемая эволюция системы"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </figure>
+            </header>
 
-              <section class="post-content">
-
-  <div class="callout">
-    <strong>По мотивам технических статей на Хабре</strong>
-    <p>
-      Этот материал — независимый разбор архитектурных ограничений ERP на основе двух статей:
-      <a href="https://habr.com/ru/companies/lsfusion/articles/544982/" target="_blank" rel="noopener noreferrer">
-        “ERP, которая не ломается от изменений” ↗
-      </a>
-      и
-      <a href="https://habr.com/ru/companies/lsfusion/articles/468415/" target="_blank" rel="noopener noreferrer">
-        “Ограничения 1С:Предприятия” ↗
-      </a>.
-      Мы не оцениваем “какая ERP лучше”. Мы берём <strong>каждый тезис пункт-в-пункт</strong> и показываем,
-      <strong>как это обычно выглядит в 1С / SAP / Dynamics / Odoo</strong> — и почему “архитектура” внезапно
-      становится проблемой руководителей, когда бизнес начинает менять правила.
-    </p>
-  </div>
+            <section class="post-content">
+            <div class="callout">
+              <strong>По мотивам технических статей на Хабре</strong>
+              <p>
+                Этот материал — независимый разбор архитектурных ограничений ERP на основе двух статей:
+                <a href="https://habr.com/ru/companies/lsfusion/articles/544982/" target="_blank" rel="noopener noreferrer">
+                  “ERP, которая не ломается от изменений” ↗
+                </a>
+                и
+                <a href="https://habr.com/ru/companies/lsfusion/articles/468415/" target="_blank" rel="noopener noreferrer">
+                  “Ограничения 1С:Предприятия” ↗
+                </a>.
+                Мы не оцениваем “какая ERP лучше”. Мы берём <strong>каждый тезис пункт-в-пункт</strong> и показываем,
+                <strong>как это обычно выглядит в 1С / SAP / Dynamics / Odoo</strong> — и почему “архитектура” внезапно
+                становится проблемой руководителей, когда бизнес начинает менять правила.
+              </p>
+            </div>
 
   <h2 id="how-to-read">Как читать этот разбор</h2>
   <p>
