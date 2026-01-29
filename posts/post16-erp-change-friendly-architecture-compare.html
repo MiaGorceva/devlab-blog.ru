@@ -159,91 +159,111 @@
               </header>
 
             <!-- ===================================================== -->
-            <nav class="post-toc" id="toc">
-              <h2>Содержание</h2>
-              <ol>
+           <nav class="post-toc" id="toc">
+            <h2>Содержание</h2>
+            <ol>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#intro">Введение</a>
-                  <ol>
-                    <li><a href="#intro-why">Почему архитектурные ограничения ERP проявляются одинаково</a></li>
-                    <li><a href="#intro-what-change">Что считать изменением бизнес-правил</a></li>
-                    <li><a href="#how-to-read">Как читать этот разбор</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#intro">Введение</a>
+                <ol>
+                  <li><a class="post-read" href="#intro-why">Почему архитектурные ограничения ERP проявляются одинаково</a></li>
+                  <li><a class="post-read" href="#intro-what-change">Что считать «изменением бизнес-правил»</a></li>
+                  <li><a class="post-read" href="#intro-how-to-read">Как читать разбор и что он даёт на практике</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-a">Модель данных и логики</a>
-                  <ol>
-                    <li><a href="#limit-1-objects">1. Объекты: справочники, документы и т.д.</a></li>
-                    <li><a href="#limit-2-data-fetch">2. Неэффективное получение данных объектов</a></li>
-                    <li><a href="#limit-3-registers">3. Регистры как отдельный аналитический слой</a></li>
-                    <li><a href="#limit-4-registers-narrow">4. Регистры поддерживаются в частных случаях</a></li>
-                    <li><a href="#limit-5-no-constraints-events">5. Нет ограничений и событий для агрегатов</a></li>
-                    <li><a href="#limit-6-virtual-params-constants">6. Параметры выборок только константные</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#data-model">Модель данных и вычислений</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-2-1">2.1 Объекты: справочники, документы и т.д.</a></li>
+                  <li><a class="post-read" href="#limit-2-2">2.2 Неэффективное получение данных объектов</a></li>
+                  <li><a class="post-read" href="#limit-2-3">2.3 Таблицы и представления: регистры</a></li>
+                  <li><a class="post-read" href="#limit-2-4">2.4 Регистры поддерживаются в очень частных случаях</a></li>
+                  <li><a class="post-read" href="#limit-2-5">2.5 Нет ограничений и событий для значений регистров</a></li>
+                  <li><a class="post-read" href="#limit-2-6">2.6 Параметры выборок только константные</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-b">Запросный слой и аналитика</a>
-                  <ol>
-                    <li><a href="#limit-7-queries">7. Запросы как самостоятельный слой системы</a></li>
-                    <li><a href="#limit-8-queries-in-strings">8. Запросы в строках</a></li>
-                    <li><a href="#limit-9-no-query-optimizer">9. Отсутствие оптимизатора запросов</a></li>
-                    <li><a href="#limit-10-no-advanced-sql">10. Отсутствие расширенных SQL-возможностей</a></li>
-                    <li><a href="#limit-11-no-update-queries">11. Нет запросов на массовые изменения</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#query-layer">Запросный слой и работа с данными</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-3-1">3.1 Запросы как самостоятельный слой системы</a></li>
+                  <li><a class="post-read" href="#limit-3-2">3.2 Запросы в строках</a></li>
+                  <li><a class="post-read" href="#limit-3-3">3.3 Предсказуемая оптимизация (симптомы слабого оптимизатора)</a></li>
+                  <li><a class="post-read" href="#limit-3-4">3.4 Отсутствие расширенных SQL-возможностей</a></li>
+                  <li><a class="post-read" href="#limit-3-5">3.5 Нет запросов на массовые изменения</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-c">Поток выполнения и консистентность</a>
-                  <ol>
-                    <li><a href="#limit-12-no-auto-locks">12. Отказ от автоматических блокировок</a></li>
-                    <li><a href="#limit-13-forms-split-client-server">13. Разделение логики клиент / сервер</a></li>
-                    <li><a href="#limit-14-no-sync">14. Асинхронность в критических операциях</a></li>
-                    <li><a href="#limit-15-no-wysiwyg">15. Отказ от WYSIWYG-поведения форм</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#execution-flow">Поток выполнения и гарантии консистентности</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-4-1">4.1 Отказ от автоматических блокировок</a></li>
+                  <li><a class="post-read" href="#limit-4-2">4.2 Отказ от единого потока выполнения</a></li>
+                  <li><a class="post-read" href="#limit-4-3">4.3 Отказ от синхронности и чёткого commit point</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-d">Инженерные ограничения платформы</a>
-                  <ol>
-                    <li><a href="#limit-16-modularity">16. Отсутствие настоящей модульности</a></li>
-                    <li><a href="#limit-17-inheritance">17. Нет наследования и полиморфизма</a></li>
-                    <li><a href="#limit-18-typing">18. Отсутствие явной типизации</a></li>
-                    <li><a href="#limit-19-physical-model">19. Закрытая физическая модель данных</a></li>
-                    <li><a href="#limit-20-visual-programming">20. Ставка на визуальное / low-code программирование</a></li>
-                    <li><a href="#limit-21-licensing">21. Лицензирование как архитектурный фактор</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#forms-layer">Формы и представление данных</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-5-1">5.1 Формы как отдельный слой логики</a></li>
+                  <li><a class="post-read" href="#limit-5-2">5.2 Отказ от WYSIWYG: чтение vs запись</a></li>
+                  <li><a class="post-read" href="#limit-5-3">5.3 Ограничения контекста списков и форм</a></li>
+                  <li><a class="post-read" href="#limit-5-4">5.4 Избыточные уровни абстракции в UI</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-e">Практика и последствия</a>
-                  <ol>
-                    <li><a href="#practice-checklist">Как понять, где вы сейчас</a></li>
-                    <li><a href="#demo-questions">Как проверять ERP на демо и пилоте</a></li>
-                    <li><a href="#lock-in">Где возникает lock-in на практике</a></li>
-                  </ol>
-                </li>
+              <li>
+                <a class="post-read" href="#language-architecture">Архитектура языка и расширяемость</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-6-1">6.1 Нет наследования и полиморфизма</a></li>
+                  <li><a class="post-read" href="#limit-6-2">6.2 Нет явной типизации</a></li>
+                  <li><a class="post-read" href="#limit-6-3">6.3 Нет настоящей модульности</a></li>
+                  <li><a class="post-read" href="#limit-6-4">6.4 Ставка на визуальное программирование</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#block-f">AI и архитектура ERP</a>
-                </li>
+              <li>
+                <a class="post-read" href="#physical-model">Физическая модель и открытость системы</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-7-1">7.1 Закрытая физическая модель данных</a></li>
+                  <li><a class="post-read" href="#limit-7-2">7.2 Статичная физическая модель данных</a></li>
+                  <li><a class="post-read" href="#limit-7-3">7.3 Закрытые исходники и лицензии</a></li>
+                </ol>
+              </li>
 
-                <!-- ============================== -->
-                <li>
-                  <a href="#conclusion">Заключение</a>
-                </li>
+              <li>
+                <a class="post-read" href="#operational-constraints">Эксплуатационные и культурные ограничения</a>
+                <ol>
+                  <li><a class="post-read" href="#limit-8-1">8.1 Лицензирование и брендирование</a></li>
+                  <li><a class="post-read" href="#limit-8-2">8.2 Фатальный недостаток как сумма решений</a></li>
+                </ol>
+              </li>
 
-              </ol>
-            </nav>
+              <li>
+                <a class="post-read" href="#demo-pilot-check">Как проверять на демо и пилоте</a>
+                <ol>
+                  <li><a class="post-read" href="#demo-what-to-ask">9.1 Три изменения для проверки</a></li>
+                  <li><a class="post-read" href="#demo-what-to-watch">9.2 На что смотреть во время демонстрации</a></li>
+                  <li><a class="post-read" href="#demo-red-flags">9.3 Типовые красные флаги</a></li>
+                  <li><a class="post-read" href="#demo-result">9.4 Что считать хорошим результатом пилота</a></li>
+                </ol>
+              </li>
+
+              <li>
+                <a class="post-read" href="#conclusion">Заключение</a>
+                <ol>
+                  <li><a class="post-read" href="#conclusion-title">10. Заключение (раздел)</a></li>
+                  <li><a class="post-read" href="#sources">Источники и ссылки</a></li>
+                  <li><a class="post-read" href="#related-posts">Похожие статьи</a></li>
+                  <li><a class="post-read" href="#feedback">Быстрый фидбек</a></li>
+                </ol>
+              </li>
+
+            </ol>
+</nav>
+
 
 
 
