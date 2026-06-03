@@ -1,13 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <title>ERPNext и MyCompany (lsFusion) для SMB: уникальные процессы, код и реальная стоимость изменений – DevLab Blog</title>
+  <title>Сравнение в реальном мире: ERPNext vs MyCompany на розничном пополнении – DevLab Blog</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta
     name="description"
-    content="По просьбам подписчиков разбираем один и тот же SMB-процесс (заказ → цена → мягкий резерв → отгрузка) и сравниваем, как он реализуется в ERPNext и MyCompany (lsFusion). Обе системы бесплатны на старте — сравниваем стоимость изменений (в часах и деньгах) и показываем код."
+    content="И ERPNext, и MyCompany (lsFusion) бесплатны на старте. Для среднего бизнеса разница не в стоимости лицензии, а в том, насколько дорого менять уникальные бизнес-процессы за 2 года. Практическое сравнение с кодом и цифрами."
   />
 
   <!-- Favicon -->
@@ -16,17 +17,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://uk.devlab.blog/img/devlab-favicon-180.png">
 
   <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  gtag('consent','default',{
-    analytics_storage:'denied',
-    ad_storage:'denied',
-    ad_user_data:'denied',
-    ad_personalization:'denied',
-    functionality_storage:'granted',
-    security_storage:'granted'
-  });
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{
+      analytics_storage:'denied',
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
   </script>
 
   <!-- Main blog styles -->
@@ -34,9 +34,6 @@
 
   <!-- Main blog scripts (year + search + views counter) -->
   <script src="https://uk.devlab.blog/js/script.js" defer></script>
-
-  <!-- post_slug → post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco
-       post_id   → post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco -->
 
   <!-- Structured data for search engines -->
   <script type="application/ld+json">
@@ -47,19 +44,13 @@
       "@type": "WebPage",
       "@id": "https://ru.devlab.blog/posts/post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco.html"
     },
-    "headline": "ERPNext и MyCompany (lsFusion) для SMB: уникальные процессы, код и реальная стоимость изменений",
-    "description": "По просьбам подписчиков разбираем один и тот же SMB-процесс (заказ → цена → мягкий резерв → отгрузка) и сравниваем, как он реализуется в ERPNext и MyCompany (lsFusion). Обе системы бесплатны на старте — сравниваем стоимость изменений (в часах и деньгах) и показываем код.",
-    "author": {
-      "@type": "Organization",
-      "name": "DevLab Blog"
-    },
+    "headline": "Сравнение в реальном мире: ERPNext vs MyCompany на розничном пополнении",
+    "description": "Глубокий архитектурный разбор ERPNext и MyCompany (lsFusion) на примере реального процесса розничного пополнения. Строки кода, философия дизайна и долгосрочные последствия для CTO.",
+    "author": { "@type": "Organization", "name": "DevLab Blog" },
     "publisher": {
       "@type": "Organization",
       "name": "DevLab",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://uk.devlab.blog/img/devlab-logo.svg"
-      }
+      "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" }
     },
     "datePublished": "2026-02-06",
     "dateModified": "2026-02-06"
@@ -69,375 +60,611 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://ru.devlab.blog/posts/post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco.html">
 
-  <!-- Google Tag Manager -->
+  <!-- GTM -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-WTZDV4K6');</script>
-  <!-- End Google Tag Manager -->
 </head>
-
 <body class="post-page">
-
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTZDV4K6"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
   <div class="page">
-    <!-- HEADER -->
     <header>
       <div class="wrapper">
         <nav class="nav">
           <a href="/" class="nav-brand">
-            <div class="nav-logo" aria-hidden="true">
+            <div class="nav-logo">
               <img src="https://uk.devlab.blog/img/devlab-logo.svg" alt="DevLab Blog logo">
             </div>
             <div class="nav-meta">
               <div class="nav-meta-title">DevLab Blog</div>
-              <div class="nav-meta-sub">Open-source ERP &amp; automation notes</div>
+              <div class="nav-meta-sub">Open-source ERP & automation notes</div>
             </div>
           </a>
-
-          <div class="nav-group">
-            <div class="nav-links">
-              <a href="/#posts">Posts</a>
-              <a href="/#categories">Categories</a>
-              <a href="/#about">About</a>
-              <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Main site</a>
-            </div>
-            <div class="nav-lang">
-              <a href="https://en.devlab.blog/">EN</a>
-              <a href="https://pl.devlab.blog/">PL</a>
-              <a href="https://ru.devlab.blog/" class="active">RU</a>
-              <a href="https://uk.devlab.blog/">UA</a>
-            </div>
-          </div>
-
-          <div class="nav-cta">
-            <a href="/#posts" class="btn btn-outline">Browse posts</a>
-            <a href="/#about" class="btn btn-primary">What is this?</a>
-          </div>
-
-          <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
         </nav>
       </div>
     </header>
 
-    <!-- MAIN -->
     <main>
       <div class="wrapper">
         <div class="main-grid">
-          <!-- ARTICLE -->
-          <article id="post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco">
+          <article id="post-erpnext-vs-mycompany-real-life">
+
             <div class="section-title">
-              <span>Article</span>
-              <small><a class="back" href="/">← Back to all posts</a></small>
+              <span>Статья</span>
+              <small><a class="back" href="/">← Ко всем статьям</a></small>
             </div>
 
             <header>
               <div class="post-meta">
-                <span>ERP / Architecture</span>
+                <span>Архитектура</span>
                 <span>&middot;</span>
-                <span>Approx. 12 min read</span>
+                <span>Чтение ~18 мин</span>
                 <span>&middot;</span>
-                <span>TCO</span>
+                <span>Глубокий разбор</span>
               </div>
 
               <h1 class="hero-title">
-                ERPNext и MyCompany (lsFusion) для SMB: уникальные процессы, код и реальная стоимость изменений
+                Сравнение в реальном мире: ERPNext vs MyCompany на розничном пополнении запасов
               </h1>
 
               <p class="hero-text">
-                По просьбам подписчиков разбираем один и тот же процесс и смотрим, как его реализовать в ERPNext и MyCompany (lsFusion): где живёт логика, что меняется проще, и сколько стоят изменения в часах и деньгах.
+                Архитектурный разбор ERPNext и MyCompany на примере простого процесса розничного пополнения, основанный на реальной структуре кода.
               </p>
-
-              <!-- HERO IMAGE (optional) -->
-              <figure class="post-hero">
-                <img
-                  src="https://uk.devlab.blog/img/placeholder-hero.jpg"
-                  alt="ERP architecture comparison and cost of change"
-                >
-              </figure>
             </header>
 
-            <!-- ARTICLE BODY -->
-            <section class="post-content">
+           <section class="post-content">
 
-              <p><strong>Важно:</strong> обе системы <strong>бесплатны на старте</strong>. В статье мы не сравниваем лицензии.
-              Мы сравниваем <strong>цену изменений</strong>: сколько часов уходит на один и тот же бизнес-поворот, и как это выглядит в коде.</p>
+            <div class="callout">
+              <nav class="post-toc">
+                <ol>
+                  <li><a class="post-read" href="#stress-test">Почему розничный реплениш — это стресс-тест</a></li>
+                  <li><a class="post-read" href="#business-spec">Бизнес-спецификация</a></li>
+                  <li><a class="post-read" href="#erpnext-impl">Реализация на ERPNext</a></li>
+                  <li><a class="post-read" href="#mycompany-impl">Реализация на MyCompany</a></li>
+                  <li><a class="post-read" href="#comparison">Сравнение бок о бок</a></li>
+                  <li><a class="post-read" href="#architecture">Архитектурные последствия</a></li>
+                  <li><a class="post-read" href="#ai-impact">Экономика разработки с ИИ</a></li>
+                  <li><a class="post-read" href="#recommendation">Когда какая платформа выигрывает</a></li>
+                  <li><a class="post-read" href="#conclusion">Вывод</a></li>
+                  <li><a class="post-read" href="#git-diff">Приложение: симуляция git diff</a></li>
+                  <li><a class="post-read" href="#feedback">Быстрая обратная связь</a></li>
+                  <li><a class="post-read" href="#related-posts">Похожие материалы</a></li>
+              </ol></nav>
+            </div>
 
-              <h2>Для кого эта статья</h2>
+            <h2 id="stress-test">1. Почему розничный реплениш — хороший стресс-тест для ERP</h2>
+
+              <p>ERP-демо красивы. Реальные операции — нет.</p>
+
+              <p>Розничное пополнение запасов — один из первых процессов, где ERP-системы перестают быть «формами и документами» и становятся <strong>движками принятия решений</strong>. Он заставляет платформу обрабатывать:</p>
+
               <ul>
-                <li>владельцам и CTO SMB,</li>
-                <li>техническим директорам,</li>
-                <li>архитекторам бизнес-систем,</li>
-                <li>тем, кто выбирает ERP не “на сейчас”, а на 2–3 года.</li>
+                <li>данные продаж во времени</li>
+                <li>корректировки прогноза (сезонность, промо)</li>
+                <li>ограничения поставщиков (lead time, MOQ, кратность упаковки)</li>
+                <li>логику нескольких складов</li>
+                <li>автоматическую генерацию документов</li>
+                <li>процессы согласования людьми</li>
+                <li>объяснимость решений системы</li>
               </ul>
 
-              <h2>1. Кейс: один процесс — две реализации</h2>
-              <p>По просьбам подписчиков разбираем <strong>один и тот же SMB-процесс</strong> и сравниваем, как он делается в <strong>ERPNext</strong> и в <strong>MyCompany (lsFusion)</strong>.</p>
+              <p>Это делает его идеальным кейсом для сравнения ERPNext и MyCompany.</p>
 
-              <h3>Процесс</h3>
-              <p><strong>Заказ клиента → Цена → Мягкий резерв → Отгрузка</strong></p>
+              <p>Цель этой статьи — не маркетинг. Цель — ответить на практический вопрос уровня CTO:</p>
 
-              <h3>Что делает процесс “уникальным” (и почему это важно для SMB)</h3>
-              <ul>
-                <li>цена зависит от клиента, срочности и текущего остатка;</li>
-                <li>резерв <strong>мягкий</strong> (может быть перехвачен другим заказом приоритетом);</li>
-                <li>менеджер видит маржу и риск и может подтвердить “заказ с риском”.</li>
-              </ul>
+              <blockquote>Сколько инженерных усилий уходит на реализацию реального розничного процесса?</blockquote>
 
-              <p>Это не экзотика — это нормальная жизнь SMB, где конкурентное преимущество часто находится в деталях процесса.</p>
+              <p>И да — мы будем считать строки кода.</p>
 
-              <h2>2. ERPNext: как это решается</h2>
+            <figure class="post-hero">
+              <img src="https://uk.devlab.blog/img/erpnextvsmycompany.webp" alt="Схема процесса розничного пополнения запасов" loading="lazy">
+            </figure>
 
-              <h3>2.1 Модель</h3>
-              <p>ERPNext живёт вокруг документов (DocType) и их жизненного цикла. Обычно “уникальность” реализуют через:</p>
-              <ul>
-                <li>хуки/обработчики событий (<code>validate</code>, <code>on_submit</code>, …),</li>
-                <li>серверные скрипты и кастомные DocType,</li>
-                <li>JS-скрипты формы для UI-поведения.</li>
-              </ul>
+            <hr>
 
-              <p><strong>Интуитивно:</strong> вы “обвешиваете” стандартный документ логикой.</p>
+            <h2 id="business-spec">2. Бизнес-спецификация (практическая, не выдуманная)</h2>
 
-              <h3>2.2 Цена (пример кода)</h3>
-              <p><code># Hook / Server Script: Sales Order validate</code></p>
-              <pre><code class="language-python">def validate(doc, method):
-    for it in doc.items:
-        rate = it.base_rate
+            <h3>Сценарий</h3>
 
-        # срочность
-        if doc.is_urgent:
-            rate *= 1.2
+            <ul>
+              <li>15 розничных магазинов</li>
+              <li>1 центральный склад</li>
+              <li>4 основных поставщика</li>
+              <li>ежедневные продажи через POS</li>
+              <li>еженедельные промоакции</li>
+              <li>смешанная стратегия: трансфер / закупка</li>
+            </ul>
 
-        # дефицит
-        stock = get_stock(it.item_code, it.warehouse)
-        if stock &lt; it.qty:
-            rate *= 1.15
+            <h3>Требования</h3>
 
-        it.rate = rate
-</code></pre>
+            <p>Каждую ночь (02:00):</p>
+            <p>Для каждого SKU в каждом магазине:</p>
 
-              <h3>2.3 Маржа и предупреждения</h3>
-              <p>В ERPNext это часто делается “сообщением” или UI-индикатором на форме:</p>
-              <pre><code class="language-python">if it.rate - it.cost_rate &lt; 0:
-    frappe.msgprint(
-        f"Negative margin for item {it.item_code}",
-        alert=True
-    )
-</code></pre>
+            <ol>
+              <li>Рассчитать средние ежедневные продажи (последние 28 дней)</li>
+              <li>Скорректировать на промо-коэффициент (если активен)</li>
+              <li>Умножить на lead time поставщика</li>
+              <li>Вычесть:
+                <ul>
+                  <li>текущий остаток</li>
+                  <li>входящие заказы поставщику</li>
+                  <li>входящие трансферы</li>
+                </ul>
+              </li>
+              <li>Применить:
+                <ul>
+                  <li>MOQ (минимальное количество заказа)</li>
+                  <li>округление до кратности упаковки</li>
+                </ul>
+              </li>
+              <li>При наличии дефицита:
+                <ul>
+                  <li>предпочесть трансфер с центрального склада (если есть)</li>
+                  <li>иначе предложить заказ поставщику</li>
+                </ul>
+              </li>
+              <li>Создать черновики документов</li>
+              <li>Записать объяснение (почему именно такое количество)</li>
+              <li>Дать UI-экран:
+                <ul>
+                  <li>просмотр предложений</li>
+                  <li>утверждение</li>
+                  <li>отклонение</li>
+                  <li>пересчёт</li>
+                </ul>
+              </li>
+            </ol>
 
-              <h3>2.4 Мягкий резерв</h3>
-              <p>Как правило, делают кастомный DocType (например, <strong>Stock Reservation</strong>) и логику “мягкого” приоритета/перехвата через проверки в хуках.</p>
-              <p><strong>Суть:</strong> концепция мягкого резерва появляется как надстройка (кастомная сущность + правила).</p>
+            <p><strong>Пример объяснимости:</strong></p>
 
-              <h2>3. MyCompany (lsFusion): как это решается</h2>
+            <blockquote>«Расчётная потребность: 94 ед. (ADS 4.7 × 14 дней − 32 остаток − 40 входящих). Округлено до 96 из-за упаковки по 12».</blockquote>
 
-              <h3>3.1 Модель</h3>
-              <p>lsFusion — модельно-ориентированный подход: вы описываете <strong>свойства</strong> (price, margin, risk, reservedQty) и <strong>действия</strong>, а UI формы обычно “следует” модели.</p>
-              <p><strong>Интуитивно:</strong> вы формулируете правила предметной области как вычислимые свойства.</p>
-              <p>Ты описываешь:</p>
-              <ul>
-                <li>что такое цена,</li>
-                <li>что такое риск,</li>
-                <li>что такое резерв,</li>
-              </ul>
-              <p>а не:</p>
-              <ul>
-                <li>где перехватить событие.</li>
-              </ul>
+            <hr>
 
-              <h3>3.2 Цена как свойство (код)</h3>
-              <pre><code class="language-lsf">price(order, line) =
-    basePrice(line)
-    * urgencyFactor(order)
-    * stockFactor(line);
-</code></pre>
+            <h2 id="erpnext-impl">3. Реализация на ERPNext</h2>
 
-              <h3>3.3 Маржа и риск — тоже свойства</h3>
-              <pre><code class="language-lsf">margin(order, line) = price(order,line) - cost(line);
-risk(order, line) = margin(order,line) &lt; 0;
-</code></pre>
+            <div class="img-carousel" aria-label="ERPNext images carousel">
+              <div class="img-track">
+                <figure class="img-slide" id="erpnext-1">
+                  <img src="https://uk.devlab.blog/img/erpnext1.webp" alt="Архитектура ERPNext и поток кастомизации" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="erpnext-2">
+                  <img src="https://uk.devlab.blog/img/erpnext2.webp" alt="Архитектура ERPNext и поток кастомизации" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="erpnext-3">
+                  <img src="https://uk.devlab.blog/img/erpnext3.webp" alt="Архитектура ERPNext и поток кастомизации" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="erpnext-4">
+                  <img src="https://uk.devlab.blog/img/erpnext4.webp" alt="Архитектура ERPNext и поток кастомизации" loading="lazy">
+                </figure>
+              </div>
+            </div>
 
-              <h3>3.4 Мягкий резерв — часть модели</h3>
-              <pre><code class="language-lsf">reservedQty(order, item) =
-    IF softReserve(order)
-    THEN requestedQty(order, item)
-    ELSE 0;
-</code></pre>
+            <div class="img-dots" aria-label="Carousel navigation">
+              <a class="img-dot" href="#erpnext-1" aria-label="erpNext-vs-myCompany"></a>
+              <a class="img-dot" href="#erpnext-2" aria-label="erpNext-vs-myCompany"></a>
+              <a class="img-dot" href="#erpnext-3" aria-label="erpNext-vs-myCompany"></a>
+              <a class="img-dot" href="#erpnext-4" aria-label="erpNext-vs-myCompany"></a>
+            </div>
 
-              <h3>3.5 UI следует модели</h3>
-              <p>Форма автоматически:</p>
-              <ul>
-                <li>показывает маржу,</li>
-                <li>подсвечивает риск,</li>
-                <li>даёт кнопку “Подтвердить с риском”.</li>
-              </ul>
+            <p>ERPNext построен на фреймворке Frappe (Python-бэкенд, JavaScript-фронтенд).</p>
 
-              <pre><code class="language-lsf">ACTION confirmWithRisk(order) {
-    IF EXISTS line WHERE risk(order, line) THEN
-        MESSAGE 'Order confirmed with risk';
-}
-</code></pre>
+            <p>Платформа уже поддерживает:</p>
 
-  
+            <ul>
+              <li>остатки</li>
+              <li>уровни перезаказа</li>
+              <li>материальные заявки (Material Requests)</li>
+              <li>заказы поставщикам (Purchase Orders)</li>
+              <li>трансферы</li>
+            </ul>
 
-              <h2>4. Где начинается экономика: стоимость изменений (без лицензий и без поддержки)</h2>
+            <p>Но как только добавляются промо, правила для нескольких магазинов, MOQ и кратность упаковки, логика «покупать или переместить» и объяснимость — встроенный реордер быстро заканчивается.</p>
 
-              <p>Ещё раз: обе системы бесплатны. Допустим, клиент сам разворачивает, сам администрирует и сам поддерживает.
-              Тогда “деньги” появляются в момент, когда бизнес говорит: <strong>“меняем правила”</strong>.</p>
+            <h3>3.1 Архитектурный подход</h3>
 
-              <h3>Предпосылки расчёта</h3>
-              <ul>
-                <li>ставка разработки: <strong>€50/час</strong></li>
-                <li>горизонт: <strong>2 года</strong></li>
-                <li>количество изменений процесса: <strong>8</strong> (в среднем раз в квартал)</li>
-              </ul>
+            <p>Типичная реализация:</p>
 
-              <h3>4.1 Сколько стоит одно изменение</h3>
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Тип работ</th>
-                      <th>ERPNext (ч)</th>
-                      <th>MyCompany (ч)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>Изменение бизнес-логики (цена/резерв/исключения)</td>
-                      <td>18–24</td>
-                      <td>6–10</td>
-                    </tr>
-                    <tr>
-                      <td>UI/форма (индикаторы, подсказки, поля)</td>
-                      <td>6–8</td>
-                      <td>2–4</td>
-                    </tr>
-                    <tr>
-                      <td>Тестирование/регресс</td>
-                      <td>8–12</td>
-                      <td>4–6</td>
-                    </tr>
-                    <tr>
-                      <td><strong>Итого за 1 изменение</strong></td>
-                      <td><strong>≈ 44</strong></td>
-                      <td><strong>≈ 18</strong></td>
-                    </tr>
-                  </tbody>
+            <ul>
+              <li>кастомный DocType: Replenishment Rule</li>
+              <li>задание по расписанию на Python</li>
+              <li>кастомный отчёт на серверной стороне</li>
+              <li>клиентские действия в UI</li>
+              <li>хуки для автоматизации и связки модулей</li>
+            </ul>
+
+            <h3>3.2 Расширение модели данных</h3>
+
+            <pre class="code-block code-enterprise" data-lang="JSON"><code>{
+              "doctype": "Replenishment Rule",
+              "fields": [
+                { "fieldname": "item", "fieldtype": "Link", "options": "Item" },
+                { "fieldname": "warehouse", "fieldtype": "Link", "options": "Warehouse" },
+                { "fieldname": "lead_time_days", "fieldtype": "Int" },
+                { "fieldname": "promotion_factor", "fieldtype": "Float" },
+                { "fieldname": "moq", "fieldtype": "Int" },
+                { "fieldname": "pack_size", "fieldtype": "Int" }
+              ]
+            }</code></pre>
+
+            <p>Типичный объём: <strong>~120–180 строк кода</strong> вместе с метаданными.</p>
+
+            <h3>3.3 Задание по расписанию (основная логика)</h3>
+
+            <pre class="code-block code-enterprise" data-lang="Python"><code># app/replenishment/scheduler.py
+
+            import frappe
+
+
+            def nightly_replenishment():
+                rules = frappe.get_all("Replenishment Rule", fields="*")
+
+                for rule in rules:
+                    avg_sales = calculate_average_sales(rule.item, rule.warehouse)
+                    adjusted_sales = avg_sales * (rule.promotion_factor or 1)
+
+                    required_qty = adjusted_sales * rule.lead_time_days
+
+                    current_stock = get_stock(rule.item, rule.warehouse)
+                    incoming = get_incoming(rule.item, rule.warehouse)
+
+                    deficit = required_qty - current_stock - incoming
+
+                    if deficit > 0:
+                        rounded_qty = round_to_pack(deficit, rule.pack_size, rule.moq)
+                        create_suggestion(rule, rounded_qty)
+            </code></pre>
+
+            <p>Вспомогательные функции (запросы остатков, SQL-джойны, отчёты, округление, создание документов, идемпотентность, логирование) добавляют ещё <strong>~180–300 строк</strong>.</p>
+
+            <h3>3.4 Отчёт о предложениях</h3>
+
+            <pre class="code-block code-enterprise" data-lang="SQL"><code>SELECT
+                item,
+                warehouse,
+                suggested_qty,
+                explanation
+            FROM `tabReplenishment Suggestion`
+            WHERE status = 'Draft';
+            </code></pre>
+
+            <p>Типичный объём: <strong>~70–120 строк</strong>.</p>
+
+            <h3>3.5 Клиентское действие «утвердить»</h3>
+
+            <pre class="code-block code-enterprise" data-lang="JavaScript"><code>frappe.ui.form.on("Replenishment Suggestion", {
+                approve(frm) {
+                    frappe.call({
+                        method: "app.replenishment.approve",
+                        args: { name: frm.doc.name },
+                        callback() {
+                            frm.reload_doc();
+                        }
+                    });
+                }
+            });
+            </code></pre>
+
+            <p>Типичный объём: <strong>~40–80 строк</strong>.</p>
+
+            <h3>3.6 Итог по объёму кода ERPNext</h3>
+
+            <div class="dev-table-wrap">
+              <table class="dev-table">
+                <tr><th>Компонент</th><th>LOC (примерно)</th></tr>
+                <tr><td>Основная логика на Python</td><td>250–400</td></tr>
+                <tr><td>Отчёты</td><td>70–120</td></tr>
+                <tr><td>Клиентский JS</td><td>40–80</td></tr>
+                <tr><td>JSON-метаданные</td><td>120–200</td></tr>
+                <tr><td><strong>Всего (LOC в репозитории)</strong></td><td><strong>480–800</strong></td></tr>
+              </table>
+            </div>
+
+            <p><strong>Только бизнес-логика (LOC):</strong> ~320–600</p>
+
+            <hr>
+
+            <h2 id="mycompany-impl">4. Реализация на MyCompany</h2>
+
+            <div class="img-carousel" aria-label="MyCompany images carousel">
+              <div class="img-track">
+                <figure class="img-slide" id="myCompany1">
+                  <img src="https://uk.devlab.blog/img/myCompany1.webp" alt="Декларативная бизнес-логика на lsFusion" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="myCompany2">
+                  <img src="https://uk.devlab.blog/img/myCompany2.webp" alt="Декларативная бизнес-логика на lsFusion" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="myCompany3">
+                  <img src="https://uk.devlab.blog/img/myCompany3.webp" alt="Декларативная бизнес-логика на lsFusion" loading="lazy">
+                </figure>
+                <figure class="img-slide" id="myCompany4">
+                  <img src="https://uk.devlab.blog/img/myCompany4.webp" alt="Декларативная бизнес-логика на lsFusion" loading="lazy">
+                </figure>
+              </div>
+              <div class="img-dots" aria-label="Carousel navigation">
+                <a class="img-dot" href="#myCompany1" aria-label="MyCompany"></a>
+                <a class="img-dot" href="#myCompany2" aria-label="MyCompany"></a>
+                <a class="img-dot" href="#myCompany3" aria-label="MyCompany"></a>
+                <a class="img-dot" href="#myCompany4" aria-label="MyCompany"></a>
+              </div>
+            </div>
+
+            <p>MyCompany построена на lsFusion — декларативной платформе бизнес-логики.</p>
+
+            <p>Вместо процедурных заданий вы описываете:</p>
+
+            <ul>
+              <li>свойства данных</li>
+              <li>вычисляемые выражения</li>
+              <li>действия</li>
+              <li>формы</li>
+            </ul>
+
+            <h3>4.1 Определение данных</h3>
+
+            <pre class="code-block code-enterprise" data-lang="lsFusion"><code>CLASS Item;
+            CLASS Warehouse;
+            CLASS Rule;
+
+            item            = DATA Item (Rule);
+            warehouse       = DATA Warehouse (Rule);
+            leadTime        = DATA INTEGER (Rule);
+            promotionFactor = DATA NUMERIC[10,2] (Rule);
+            moq             = DATA INTEGER (Rule);
+            packSize        = DATA INTEGER (Rule);
+            </code></pre>
+
+            <h3>4.2 Вычисляемые свойства</h3>
+
+            <pre class="code-block code-enterprise" data-lang="lsFusion"><code>avgSales(Item i, Warehouse w) =
+                SUM quantity(Sale s)
+                WHERE s.item = i
+                  AND s.warehouse = w
+                  AND s.date >= currentDate() - 28
+                / 28;
+
+            requiredQty(Rule r) =
+                avgSales(item(r), warehouse(r))
+                * promotionFactor(r)
+                * leadTime(r);
+
+            deficit(Rule r) =
+                requiredQty(r)
+                - currentStock(item(r), warehouse(r))
+                - incoming(item(r), warehouse(r));
+            </code></pre>
+
+            <h3>4.3 Логика округления</h3>
+
+            <pre class="code-block code-enterprise" data-lang="lsFusion"><code>roundedQty(Rule r) =
+                MAX(
+                    moq(r),
+                    CEIL(deficit(r) / packSize(r)) * packSize(r)
+                )
+                IF deficit(r) > 0;
+            </code></pre>
+
+            <h3>4.4 Действие</h3>
+
+            <pre class="code-block code-enterprise" data-lang="lsFusion"><code>generateSuggestions() {
+                FOR r IN Rule DO {
+                    IF deficit(r) > 0 THEN
+                        NEW Suggestion {
+                            rule        = r;
+                            quantity    = roundedQty(r);
+                            explanation =
+                                "ADS × LT – stock – incoming = " + deficit(r);
+                        };
+                }
+            }
+            </code></pre>
+
+            <h3>4.5 UI</h3>
+
+            <pre class="code-block code-enterprise" data-lang="lsFusion"><code>FORM suggestions
+                OBJECTS s = Suggestion
+                PROPERTIES s.rule, s.quantity, s.explanation;
+            </code></pre>
+
+            <h3>4.6 Итог по объёму кода MyCompany</h3>
+
+            <div class="dev-table-wrap">
+              <table class="dev-table">
+                <tr><th>Компонент</th><th>LOC (примерно)</th></tr>
+                <tr><td>Определения данных</td><td>~25</td></tr>
+                <tr><td>Бизнес-логика (свойства)</td><td>~60–90</td></tr>
+                <tr><td>Округление</td><td>~10</td></tr>
+                <tr><td>Действия</td><td>~30–40</td></tr>
+                <tr><td>UI</td><td>~20–30</td></tr>
+                <tr><td><strong>Итого</strong></td><td><strong>~145–195</strong></td></tr>
+              </table>
+            </div>
+
+            <hr>
+
+           <h2 id="comparison">5. Сравнение бок о бок</h2>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <tr><th>Метрика</th><th>ERPNext</th><th>MyCompany</th></tr>
+                  <tr><td>Парадигма логики</td><td>Процедурная (Python + связки)</td><td>Декларативная (свойства + действия)</td></tr>
+                  <tr><td>Планирование заданий</td><td>Явное задание по расписанию + связки</td><td>Модель, ориентированная на действия (обычно меньше связок)</td></tr>
+                  <tr><td>Сборка UI</td><td>Часто требует клиентских скриптов</td><td>Декларативные формы</td></tr>
+                  <tr><td>LOC (только логика)</td><td>~320–600</td><td>~100–150</td></tr>
+                  <tr><td>LOC (весь репозиторий)</td><td>~480–800</td><td>~145–200</td></tr>
                 </table>
               </div>
 
-              <h3>4.2 Сколько стоят 8 изменений за 2 года</h3>
-              <div class="table-wrap">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Параметр</th>
-                      <th>ERPNext</th>
-                      <th>MyCompany</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr><td>Изменений</td><td>8</td><td>8</td></tr>
-                    <tr><td>Часов на одно</td><td>44</td><td>18</td></tr>
-                    <tr><td>Всего часов</td><td>352</td><td>144</td></tr>
-                    <tr><td>Стоимость (при €50/ч)</td><td>€17 600</td><td>€7 200</td></tr>
-                  </tbody>
-                </table>
-              </div>
+              <hr>
 
-              <p><strong>Вывод:</strong> при одинаковом количестве “бизнес-поворотов” разница возникает не из-за лицензий, а из-за того,
-              <em>как устроена кастомизация</em>: через “обвес документов обработчиками” или через “модель свойств и действий”.</p>
-              <p><strong>👉 Разница ~2×, при том что обе системы бесплатны.</strong></p>
+              <h2 id="architecture">6. Архитектурные последствия</h2>
 
-              <h2>5. Что это значит для SMB (без лозунгов)</h2>
+              <p>Расширения ERPNext часто размазывают логику между <strong>Python</strong>, <strong>JavaScript</strong> и <strong>метаданными</strong>. MyCompany, как правило, централизует бизнес-правила как <strong>декларативную модель</strong>.</p>
+
+              <p>Больше строк кода обычно означает:</p>
+
               <ul>
-                <li>Если ваш процесс близок к стандартному — ERPNext может быть очень удобен.</li>
-                <li>Если конкурентное преимущество — в постоянной тонкой настройке процесса — экономику определяет цена изменений.</li>
+                <li>более высокую когнитивную нагрузку</li>
+                <li>больше интеграционных «связок»</li>
+                <li>больше поверхности для регрессий</li>
               </ul>
 
-              <p><strong>Главный критерий:</strong> сколько стоит “поменять правила” через 6–12 месяцев, когда система уже живёт в проде.</p>
+              <p>Это автоматически не делает одну платформу «лучше». Это говорит о том, какую цену изменений вы покупаете.</p>
 
-            </section>
+              <hr>
 
-            <!-- FOOTER (tags + meta + Views) -->
-            <footer class="post-footer-extended">
-              <div class="post-footer-meta">
-                <div class="post-meta-tags">
-                  <span class="post-tag">ERP</span>
-                  <span class="post-tag">Architecture</span>
-                  <span class="post-tag">SMB</span>
-                  <span class="post-tag">TCO</span>
-                  <span class="post-tag">Open-source</span>
+              <h2 id="ai-impact">7. Экономика разработки с ИИ</h2>
+
+              <p>Есть и современное измерение, которое нельзя игнорировать: объём и структура кода влияют на то, насколько эффективно ИИ-инструменты помогают, рефакторят и генерируют расширения.</p>
+
+              <ul>
+                <li><strong>Стоимость контекста:</strong> больше файлов и слоёв-связок обычно увеличивают объём контекста для корректной помощи ИИ — и поднимают стоимость инференса.</li>
+                <li><strong>Стоимость верификации:</strong> фрагментированная процедурная логика часто требует больше тестовой обвязки и проверок во времени выполнения.</li>
+                <li><strong>Стоимость рефакторинга:</strong> больше точек связи затрудняет безопасный автоматический рефакторинг (и для людей, и для ИИ).</li>
+                <li><strong>Стоимость фиксации знаний:</strong> разрозненная логика увеличивает объём документации, усилия на промптинг и время супервизии.</li>
+              </ul>
+
+              <p>Иначе говоря, LOC — это уже не только прокси для стоимости поддержки людьми. Это всё больше прокси для <strong>стоимости эволюции с ИИ</strong>.</p>
+
+              <hr>
+
+              <h2 id="recommendation">8. Когда какая платформа выигрывает</h2>
+
+              <h3>Выбирайте ERPNext, если:</h3>
+              <ul>
+                <li>нужен широкий ERP быстро (учёт + закупки + остатки) и хочется крупную экосистему;</li>
+                <li>правила пополнения относительно стандартные и меняются редко;</li>
+                <li>предпочитаете Python и привычное сообществу решение, а не парадигму «сначала модель».</li>
+              </ul>
+
+              <h3>Выбирайте MyCompany, если:</h3>
+              <ul>
+                <li>конкурентное преимущество — в кастомных бизнес-правилах и быстрых итерациях;</li>
+                <li>правила часто меняются, и хочется, чтобы система оставалась объяснимой;</li>
+                <li>хочется ERP как конструктор: модель, которую вы развиваете, а не продукт, который вы патчите.</li>
+              </ul>
+
+              <hr>
+
+              <h2 id="conclusion">9. Вывод</h2>
+
+              <p>Подсчёт строк кода — не всё. Но в сложных бизнес-процессах LOC коррелирует с когнитивной нагрузкой, а она — со стоимостью долгосрочной поддержки.</p>
+
+              <p>В этом сценарии пополнения:</p>
+
+              <ul>
+                <li>ERPNext обычно требует <strong>~в 2–4 раза больше кастомного кода</strong>;</li>
+                <li>MyCompany часто выражает те же правила на меньшей и более централизованной поверхности логики.</li>
+              </ul>
+
+              <hr>
+
+              <h2 id="git-diff">Приложение A. Симуляция git diff (как честно это измерить)</h2>
+
+              <p>Если хотите, чтобы сравнение «сколько строк» было защитимым, измеряйте его реальным diff репозитория и LOC-инструментом (например, <code>cloc</code>) с прозрачными правилами включения. Ниже — симулированный, но структурно реалистичный пример.</p>
+
+              <h3>ERPNext (приложение Frappe) — симулированный diff</h3>
+
+              <pre class="code-block code-enterprise" data-lang="Terminal"><code>$ git diff --stat
+
+              app/replenishment/hooks.py                                              |  34 +++++++
+              app/replenishment/scheduler.py                                          | 140 +++++++++++++++++++++
+              app/replenishment/api.py                                                |  88 +++++++++++++
+              app/replenishment/utils/sales.py                                        |  74 ++++++++++++
+              app/replenishment/utils/stock.py                                        |  92 +++++++++++++++
+              app/replenishment/utils/rounding.py                                     |  38 ++++++++
+              app/replenishment/doctype/replenishment_rule/replenishment_rule.json    | 165 +++++++++++++++++++++++++
+              app/replenishment/doctype/replenishment_suggestion/replenishment_suggestion.json | 142 +++++++++++++++++++++++
+              app/replenishment/report/replenishment_suggestions/replenishment_suggestions.py |  76 +++++++++++++
+              app/replenishment/report/replenishment_suggestions/replenishment_suggestions.js |  58 ++++++++++
+              app/replenishment/public/js/replenishment_suggestion_form.js            |  62 +++++++++++
+              12 files changed, 971 insertions(+)
+              </code></pre>
+
+              <p>Типичная интерпретация:</p>
+              <ul>
+                <li><strong>LOC только логики</strong> = scheduler + utils + API + Python отчётов + минимум JS (~320–600).</li>
+                <li><strong>Общий LOC репозитория</strong> включает JSON-метаданные (~480–900+ в зависимости от UI/фикстур отчётов).</li>
+              </ul>
+
+              <h3>MyCompany (модуль lsFusion) — симулированный diff</h3>
+
+              <pre class="code-block code-enterprise" data-lang="Terminal"><code>$ git diff --stat
+
+              modules/replenishment/Replenishment.lsf        | 182 +++++++++++++++++++++++++++
+              modules/replenishment/ReplenishmentForms.lsf   |  54 ++++++++
+              modules/replenishment/ReplenishmentDocs.lsf    |  31 ++++
+              3 files changed, 267 insertions(+)
+              </code></pre>
+
+              <p>Дисциплина, которая делает сравнения LOC осмысленными: одна и та же спецификация, один и тот же метод измерения, прозрачные правила включения.</p>
+
+            <h2 id="feedback">Быстрая обратная связь</h2>
+              <div class="callout">
+                <strong>Было полезно?</strong>
+                <p>Короткий сигнал помогает нам выбирать темы для следующих материалов.</p>
+
+                <div class="hero-actions">
+                  <button class="btn btn-primary" type="button" data-vote="like">
+                    👍 Полезно <span class="count" data-count="like">—</span>
+                  </button>
+
+                  <button class="btn btn-outline" type="button" data-vote="dislike">
+                    👎 Не очень <span class="count" data-count="dislike">—</span>
+                  </button>
                 </div>
 
-                <div class="post-meta-secondary">
-                  <span>Published: February 6, 2026</span>
-                  <span>·</span>
-                  <span>Approx. 12 min read</span>
-                  <span>·</span>
-                  <span class="post-views">Views: <span class="count">—</span></span>
-                </div>
+                <p class="sidebar-text">Без комментариев и аккаунтов.</p>
               </div>
-            </footer>
 
-            <!-- Inline newsletter (optional) -->
-            <section class="sidebar-block">
-              <p class="sidebar-text">
-                No spam – just occasional notes on ERP design, automation experiments and new posts.
-              </p>
-              <form class="newsletter-form"
-                    action="https://formsubmit.co/info@devlab.blog"
-                    method="POST">
-                <input type="hidden" name="_next" value="https://en.devlab.blog/thank-you.html">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="_honey" style="display:none">
-
-                <input type="email" name="email" class="field" placeholder="Your email address" required>
-                <button class="btn btn-primary" type="submit">Subscribe</button>
-
-                <p class="newsletter-note">
-                  You will receive a confirmation email.<br>
-                  Powered securely via FormSubmit.
-                </p>
-              </form>
+          <h2 id="related-posts">Похожие материалы</h2>
+              <div class="callout">
+                <strong>Что ещё почитать:</strong>
+                <p>Если вас волнуют практические последствия архитектуры ERP и снижение зависимости от подрядчиков — больше материалов на DevLab Blog:</p>
+                <ul>
+                  <li>
+                    <a href="posts/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.html" target="_blank" rel="noopener noreferrer">
+                      ERP, которая не ломается от изменений: разбор архитектуры (и сравнение с 1C / SAP / Dynamics / Odoo) ↗
+                    </a>
+                  </li>
+                  <li>
+                    <a href="https://ru.devlab.blog/main-erp-stack-2032-ai-readable-architectures.html" target="_blank" rel="noopener noreferrer">
+                      Почему ERP будущего будут модульными, декларативными и AI-читаемыми ↗
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </section>
+            <div class="post-nav-links">
+              <a class="back" href="/#posts" style="margin-left: 0;">← Ко всем статьям</a>
+              <a class="back" href="/#categories" style="margin-right: 0;">Категории →</a>
+            </div>
           </article>
 
-          <!-- SIDEBAR -->
           <aside class="sidebar">
             <section class="sidebar-block">
               <h3 class="sidebar-title" id="topic-question-title">Предложить тему</h3>
               <p class="sidebar-text">
-                Есть вопрос или идея для будущей статьи?
-                <a class="post-read" href="mailto:info@devlab.blog?subject=Вопрос%20или%20идея%20для%20DevLab%20Blog">
+                Есть вопрос или идея для следующей статьи?
+                <a class="post-read" href="mailto:info@devlab.blog?subject=Вопрос%20или%20идея%20темы%20для%20DevLab%20Blog">
                   Напишите нам →
                 </a>
               </p>
             </section>
 
             <section class="sidebar-block">
-              <h3 class="sidebar-title">About this blog</h3>
-              <p class="sidebar-text">
-                DevLab Blog focuses on open-source ERP concepts, modular business systems and low-code
-                automation. We write about architectural patterns, integration strategies and real-world
-                implementation lessons.
-              </p>
+              <h3 class="sidebar-title">Об этом блоге</h3>
+              <p class="sidebar-text">DevLab Blog — заметки об open-source ERP, модульных подходах, интеграциях и практике автоматизации. Пишем о том, что ломается в реальных внедрениях и как принимать технические решения без «религии».</p>
             </section>
 
             <section class="sidebar-block">
-              <h3 class="sidebar-title">More to explore</h3>
-              <p class="sidebar-text">
-                Go back to the main page to see other posts, or browse by category:
-              </p>
+              <h3 class="sidebar-title">Что ещё посмотреть</h3>
+              <p class="sidebar-text">Вернитесь на главную или выберите по категории:</p>
               <ul>
-                <li><a href="/">All blog posts</a></li>
-                <li><a href="/#categories">Browse by category</a></li>
-                <li><a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">DevLab main site</a></li>
+                <li><a href="/">Все статьи</a></li>
+                <li><a href="/#categories">Категории</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт DevLab</a></li>
               </ul>
             </section>
           </aside>
@@ -445,19 +672,16 @@ risk(order, line) = margin(order,line) &lt; 0;
       </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="site-footer">
       <div class="wrapper footer-grid">
         <div>
           <div class="footer-links">
-            <a href="/">Posts</a>
-            <a href="/#categories">Categories</a>
-            <a href="/#about">About</a>
-            <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Main site</a>
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт</a>
           </div>
-          <p class="footer-meta">
-            DevLab Blog – notes on open-source ERP, modular architectures and automation experiments.
-          </p>
+          <p class="footer-meta">DevLab Blog — заметки об open-source ERP, модульных архитектурах и автоматизации.</p>
         </div>
         <div class="footer-meta">
           <p>&copy; <span id="year"></span> DevLab Blog</p>
