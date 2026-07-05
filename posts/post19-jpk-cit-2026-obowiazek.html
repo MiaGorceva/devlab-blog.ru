@@ -1,0 +1,734 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>JPK_CIT 2026: обязанность структурированных книг — JPK_KR_PD, JPK_ST_KR, график и подготовка – DevLab Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Практический гайд по JPK_CIT: что это, структуры JPK_KR_PD и JPK_ST_KR, поэтапный график 2025–2027, первая отправка вместе с годовой декларацией CIT, налоговые маркеры, маппинг счетов, связь с KSeF и JPK_VAT и чек-лист подготовки."
+  />
+  <meta name="keywords" content="JPK_CIT, JPK_KR_PD, JPK_ST_KR, бухгалтерские книги, CIT, структурированные книги, JPK, налоговая группа, налоговые маркеры, план счетов, KSeF, JPK_VAT, автоматизация бухгалтерии" />
+
+  <link rel="icon" type="image/svg+xml" href="https://uk.devlab.blog/img/devlab-logo.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="https://uk.devlab.blog/img/devlab-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://uk.devlab.blog/img/devlab-favicon-180.png">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{
+      analytics_storage:'denied',
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+  </script>
+
+  <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
+  <script src="https://uk.devlab.blog/js/script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://ru.devlab.blog/posts/post19-jpk-cit-2026-obowiazek.html"
+    },
+    "headline": "JPK_CIT 2026: обязанность структурированных бухгалтерских книг — JPK_KR_PD, JPK_ST_KR, график и подготовка",
+    "description": "Практический гайд по JPK_CIT: структуры JPK_KR_PD и JPK_ST_KR, поэтапный график 2025–2027, первая отправка вместе с годовой декларацией CIT, налоговые маркеры, маппинг счетов, связь с KSeF и JPK_VAT и чек-лист подготовки.",
+    "author": { "@type": "Organization", "name": "DevLab Blog" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevLab",
+      "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" }
+    },
+    "datePublished": "2026-07-04",
+    "dateModified": "2026-07-04"
+  }
+  </script>
+
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post19-jpk-cit-2026-obowiazek.html">
+
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WTZDV4K6');</script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Что такое JPK_CIT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPK_CIT — это обязанность вести бухгалтерские книги с помощью программного обеспечения и передавать их налоговому органу в структурированном формате. Состоит из двух логических структур: JPK_KR_PD (книги с налоговыми данными) и JPK_ST_KR (реестр основных средств и нематериальных активов). Обязанность введена поправкой к закону о CIT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "С какого момента действует JPK_CIT и кого касается первым?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "График поэтапный. За налоговый год, начинающийся после 31 декабря 2024, обязанность охватывает сначала крупнейших плательщиков CIT (доход свыше 50 млн евро) и налоговые группы. За год после 31 декабря 2025 подключаются остальные плательщики CIT, обязанные подавать JPK_VAT. За год после 31 декабря 2026 обязанность охватывает остальных плательщиков CIT."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Когда JPK_CIT нужно отправить впервые?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPK_CIT отправляется раз в год, вместе с годовой декларацией CIT — до конца третьего месяца после окончания налогового года. Для года, совпадающего с календарным, это обычно конец марта. Но книги нужно вести в требуемой структуре весь год, а не собирать их только к моменту отправки."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как JPK_CIT связан с KSeF и JPK_VAT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JPK_CIT не существует в вакууме. Данные книг должны быть согласованы с JPK_VAT и с фактурами, проходящими через KSeF. Расхождение между доходом в книгах и продажами в JPK_VAT либо между проведённой фактурой и её аналогом в KSeF — самый частый повод для проверки. Упорядочивание исходных данных до первой отправки критично."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body class="post-page">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTZDV4K6"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="page">
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">
+              <img src="https://uk.devlab.blog/img/devlab-logo.svg" alt="Логотип DevLab Blog">
+            </div>
+            <div class="nav-meta">
+              <div class="nav-meta-title">DevLab Blog</div>
+              <div class="nav-meta-sub">Open-source ERP и автоматизация</div>
+            </div>
+          </a>
+
+          <div class="nav-group">
+            <div class="nav-links">
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт</a>
+            </div>
+            <div class="nav-lang">
+              <a href="https://en.devlab.blog/">EN</a>
+              <a href="https://pl.devlab.blog/">PL</a>
+              <a href="https://ru.devlab.blog/" class="active">RU</a>
+              <a href="https://uk.devlab.blog/">UA</a>
+            </div>
+          </div>
+
+          <div class="nav-cta">
+            <a href="/#posts" class="btn btn-outline">К статьям</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
+          </div>
+
+          <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrapper">
+        <div class="main-grid">
+
+          <article id="post19-jpk-cit-2026-obowiazek">
+            <div class="section-title">
+              <span>Статья</span>
+              <small><a href="/">← Ко всем статьям</a></small>
+            </div>
+
+            <header>
+              <div class="post-meta">
+                <span>Польша · JPK_CIT · Compliance</span>
+                <span>&middot;</span>
+                <span>Чтение: ~14 мин</span>
+                <span>&middot;</span>
+                <span>Опубликовано: 4 июля 2026</span>
+              </div>
+
+              <h1 class="hero-title">
+                JPK_CIT 2026: конец эпохи «книги — наше дело» — что меняется и как подготовиться
+              </h1>
+
+              <p class="hero-text">
+                Налоговая перестаёт спрашивать результат и начинает читать всю книгу. JPK_CIT — это обязанность отправлять
+                бухгалтерские книги в структурированном формате: счёт за счётом, проводка за проводкой. Кто, с какого момента,
+                в какой структуре и что чаще всего разъезжается на практике. Без воды.
+              </p>
+
+              <figure class="post-hero">
+                <img
+                  src="https://uk.devlab.blog/img/post19-jpk-cit-2026-obowiazek.webp"
+                  alt="JPK_CIT 2026: структуры JPK_KR_PD и JPK_ST_KR, поэтапный график и подготовка бухгалтерских книг"
+                >
+              </figure>
+            </header>
+
+            <section class="post-content">
+
+              <!-- TL;DR -->
+              <div class="post-quick">
+                <p class="post-quick__title">Если коротко (60 секунд)</p>
+                <p class="post-quick__text">
+                  <strong>Что это.</strong> Обязанность вести и передавать бухгалтерские книги в структурированном формате: структура <strong>JPK_KR_PD</strong> (книги с налоговыми данными) и <strong>JPK_ST_KR</strong> (основные средства и НМА). Введена поправкой к закону о CIT.
+                  <strong>График.</strong> Поэтапно: за год после 31.12.2024 — крупнейшие плательщики CIT (доход &gt;50 млн EUR) и налоговые группы; за год после 31.12.2025 — остальные плательщики CIT, подающие JPK_VAT; за год после 31.12.2026 — все остальные.
+                  <strong>Срок.</strong> Первая отправка вместе с годовой декларацией CIT — до конца 3-го месяца после окончания налогового года.
+                  <strong>Что болит.</strong> Не XML, а данные: маппинг счетов на стандарт, налоговые маркеры, идентификация контрагентов, согласованность с KSeF и JPK_VAT.
+                </p>
+              </div>
+
+              <h2 id="intro">Что на самом деле меняется</h2>
+
+              <p>
+                До сих пор бухгалтерские книги были внутренней кухней компании. Налоговая видела результат: декларацию CIT, отчётность,
+                JPK по запросу. То, как именно проведена каждая операция — каким счётом, с каким описанием, на основании какого документа —
+                оставалось внутри компании, пока не приходила проверка и не просила выписку.
+              </p>
+
+              <p>
+                <strong>JPK_CIT переворачивает эту логику.</strong> Теперь компания сама, раз в год, отправляет налоговой <em>всю</em> книгу
+                в машиночитаемом формате — со счетами, размеченными по стандарту, налоговыми маркерами на каждой значимой строке,
+                идентифицированными контрагентами и отдельным реестром основных средств. Не результат. Не выборку. Книгу.
+              </p>
+
+              <p>Что это значит на практике для бухгалтерии:</p>
+
+              <ul>
+                <li>План счетов нужно <strong>смаппить</strong> на стандартный вид, который ожидает структура — «у нас это счёт 731-2» больше не проходит.</li>
+                <li>Каждая проводка с налоговым значением должна нести нужный <strong>налоговый маркер</strong> (например, невычитаемый расход, освобождённый доход).</li>
+                <li>Контрагенты должны быть идентифицированы проверяемыми данными — NIP в едином формате, а не «Торговый дом Ковальский».</li>
+                <li>Основные средства и НМА идут отдельной структурой <strong>JPK_ST_KR</strong> — с датами, стоимостью, амортизацией.</li>
+                <li>Данные должны <em>сходиться</em> с тем, что вы уже отправили в JPK_VAT и что прошло через KSeF.</li>
+              </ul>
+
+              <div class="post-toc" aria-label="Содержание">
+                <div class="post-toc__title">В этой статье</div>
+                <ul class="post-toc__list">
+                  <li><a href="#czym-jest">Что такое JPK_CIT: JPK_KR_PD и JPK_ST_KR</a></li>
+                  <li><a href="#harmonogram">График: кто и с какого момента</a></li>
+                  <li><a href="#termin">Срок: когда первая отправка</a></li>
+                  <li><a href="#dane">Что должно быть в книгах</a></li>
+                  <li><a href="#powiazania">Связь с KSeF и JPK_VAT</a></li>
+                  <li><a href="#ryzyka">7 мест, где это разъезжается</a></li>
+                  <li><a href="#checklist">Чек-лист подготовки</a></li>
+                  <li><a href="#narzedzia">Инструменты: готовые vs open-source</a></li>
+                  <li><a href="#wniosek">Вывод: что сделать уже сейчас</a></li>
+                  <li><a href="#faq">FAQ</a></li>
+                  <li><a href="#sources">Официальные источники</a></li>
+                </ul>
+              </div>
+
+              <hr>
+
+              <h2 id="czym-jest">Что такое JPK_CIT: две структуры, одна обязанность</h2>
+
+              <p>
+                «JPK_CIT» — разговорное название обязанности, которая на практике состоит из <strong>двух отдельных логических структур</strong>.
+                Их стоит разделить сразу, потому что путаница между ними — первый источник хаоса при внедрении.
+              </p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr><th>Структура</th><th>Что содержит</th><th>Суть</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>JPK_KR_PD</strong></td>
+                      <td>Бухгалтерские книги, расширенные налоговыми данными: проводки по счетам, налоговые маркеры, связь с первичными документами, данные контрагентов</td>
+                      <td>Это «мясо» обязанности — полная картина проводок в налоговом разрезе</td>
+                    </tr>
+                    <tr>
+                      <td><strong>JPK_ST_KR</strong></td>
+                      <td>Реестр основных средств и нематериальных активов: первоначальная стоимость, дата ввода в эксплуатацию, метод и ставка амортизации, изменения стоимости</td>
+                      <td>Отдельный реестр внеоборотных активов — часто недооценивают при планировании</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Обязанность введена <strong>поправкой к закону о CIT</strong> — книги должны вестись с помощью программного обеспечения
+                и передаваться налоговым органам в структурированном виде. «JPK_CIT» удобно в разговоре, но в технической документации
+                всегда оперируйте названиями структур: именно они определяют, какие поля и в каком формате должна сгенерировать система.
+              </p>
+
+              <div class="callout">
+                <strong>Частое заблуждение.</strong>
+                <p>
+                  JPK_CIT — это не «ещё одна декларация раз в год». Это требование <em>вести книги</em> в определённой структуре весь год.
+                  Если 11 месяцев вы проводите «по-старому», а в декабре хотите превратить это в JPK_KR_PD — не хватит маркеров, описаний
+                  и идентификаторов, которые никто не вносил по ходу дела. Структура отправки — следствие, а не причина. Причина — то, как вы проводите.
+                </p>
+              </div>
+
+              <hr>
+
+              <h2 id="harmonogram">График: кто и с какого момента</h2>
+
+              <p>
+                Обязанность вводится поэтапно, в зависимости от вашего налогового года и группы плательщиков. Ключевая формулировка —
+                «за налоговый год, <em>начинающийся после</em>» даты, не путать с календарным годом отправки.
+              </p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr><th>Налоговый год, начинающийся после</th><th>Кого охватывает</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>31 декабря 2024</strong></td>
+                      <td>Крупнейшие плательщики CIT — доход за предыдущий год <strong>свыше 50 млн евро</strong> — и <strong>налоговые группы</strong> (PGK)</td>
+                    </tr>
+                    <tr>
+                      <td><strong>31 декабря 2025</strong></td>
+                      <td>Остальные плательщики CIT, <strong>обязанные подавать JPK_VAT</strong></td>
+                    </tr>
+                    <tr>
+                      <td><strong>31 декабря 2026</strong></td>
+                      <td>Остальные плательщики CIT (замыкающая группа)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Иначе говоря: если вы крупный плательщик или работаете в налоговой группе, обязанность уже касается вас за год, начавшийся в 2025.
+                Средние компании, подающие JPK_VAT, подключаются годом позже. Все остальные — ещё годом позже. Но учтите:
+                <strong>подготовка книг начинается задолго до первой отправки</strong>, ведь их нужно вести в новой структуре с первого дня года, попавшего под обязанность.
+              </p>
+
+              <div class="callout">
+                <strong>Практический совет для «второй волны».</strong>
+                <p>
+                  Если ваша обязанность стартует за год, начинающийся после 31.12.2025, значит книги в структуре нужно вести <em>с января 2026</em> —
+                  а не с момента отправки в 2027. Компании, которые это упустят, в первом квартале следующего года обнаруживают, что весь предыдущий
+                  год надо «перемаппить» задним числом. Это самый дорогой сценарий.
+                </p>
+              </div>
+
+              <hr>
+
+              <h2 id="termin">Срок: когда первая отправка</h2>
+
+              <p>
+                В отличие от JPK_VAT (ежемесячный), JPK_CIT отправляется <strong>раз в год</strong> — вместе с годовой декларацией CIT.
+                Срок — <strong>конец третьего месяца после окончания налогового года</strong>.
+              </p>
+
+              <p>
+                Для компании, у которой налоговый год совпадает с календарным, это обычно конец марта следующего года. Если год сдвинут
+                (например, с 1 июля по 30 июня), три месяца отсчитываете от своей даты закрытия. Сама отправка — формальность; проблема в том,
+                чтобы книги <em>весь год</em> велись так, чтобы одним движением сгенерировать JPK_KR_PD и JPK_ST_KR.
+              </p>
+
+              <hr>
+
+              <h2 id="dane">Что должно быть в книгах</h2>
+
+              <p>
+                Это раздел, который решает исход. Структура требует данных, которые многие компании сегодня не ведут в нужном виде:
+              </p>
+
+              <h3>Разметка счетов по стандарту</h3>
+              <p>
+                Ваш корпоративный план счетов нужно <strong>смаппить</strong> на вид, ожидаемый структурой. Это не значит отказаться от своей
+                нумерации — но у каждого счёта должен быть присвоенный аналог в стандарте. Самая частая ловушка: «исторические» счета,
+                используемые годами, которые никто уже не может однозначно квалифицировать.
+              </p>
+
+              <h3>Налоговые маркеры</h3>
+              <p>
+                Проводки с налоговым значением должны нести нужный маркер — например, невычитаемый расход, освобождённый доход, временные разницы.
+                Это информация, которую бухгалтерия и так знает «в голове», но она должна попасть в проводку машиночитаемо. Без этого JPK_KR_PD неполон.
+              </p>
+
+              <h3>Идентификация контрагентов</h3>
+              <p>
+                Контрагент в проводке должен быть идентифицирован проверяемыми данными — прежде всего NIP в едином формате. «Магазин на углу»,
+                «Аванс Ковальский», «Разные» — такие описания проходят во внутреннем учёте, но в структуре это сигнал проблемы.
+              </p>
+
+              <h3>Основные средства и НМА (JPK_ST_KR)</h3>
+              <p>
+                Отдельная структура с данными о внеоборотных активах: первоначальная стоимость, дата ввода в эксплуатацию, метод и ставка амортизации,
+                корректировки стоимости, выбытия. Многие компании ведут учёт ОС в отдельном модуле или таблице, которая <em>не связана</em>
+                с главной книгой. Это первый кандидат на расхождение.
+              </p>
+
+              <hr>
+
+              <h2 id="powiazania">Связь с KSeF и JPK_VAT: согласованность или проверка</h2>
+
+              <p>
+                JPK_CIT не живёт изолированно. Это третий элемент пазла рядом с JPK_VAT и KSeF — а налоговая получает все три и может их сопоставить.
+              </p>
+
+              <ul>
+                <li>
+                  <strong>Доход в книгах vs продажи в JPK_VAT.</strong> Если доход в JPK_KR_PD не сходится с продажами в JPK_VAT
+                  (после корректировок на разницы VAT/CIT) — готовый повод для вопросов.
+                </li>
+                <li>
+                  <strong>Проведённая фактура vs её аналог в KSeF.</strong> С момента, когда фактура продажи или закупки проходит через KSeF,
+                  у неё есть идентификатор. Проводка в книге по этой фактуре должна связываться с ней. Разъезд здесь — самый чистый сигнал для проверки.
+                </li>
+                <li>
+                  <strong>Корректировки.</strong> Корректирующая фактура меняет и VAT, и базу CIT, и проводку в книге. Если эти три слоя корректировать
+                  несогласованно или в разных периодах — данные разъедутся, и проверка увидит разницу сразу.
+                </li>
+              </ul>
+
+              <div class="callout">
+                <strong>Суть.</strong>
+                <p>
+                  Главный риск JPK_CIT — не «не отправим файл». Это <em>отправим файл, который не сходится с тем, что уже отправили</em>.
+                  Три системы отчётности — KSeF, JPK_VAT, JPK_CIT — должны рассказывать одну историю. Упорядочить исходные данные
+                  <em>до того</em>, как сгенерируете первый JPK_KR_PD, важнее самого инструмента отправки.
+                </p>
+              </div>
+
+              <hr>
+
+              <h2 id="ryzyka">7 мест, где это разъезжается</h2>
+
+              <ol>
+                <li>
+                  <strong>Маппинг счетов «впритык».</strong>
+                  Стандарт присвоен только счетам, активным в текущем году. Старые счета, технические счета, счета расходов будущих периодов — пропущены.
+                  Всплывает при первой нетипичной операции.
+                </li>
+                <li>
+                  <strong>Маркеры не по ходу дела.</strong>
+                  Бухгалтерия знает налоговую квалификацию «по памяти», но не фиксирует её при проводке. На конец года приходится вручную
+                  размечать тысячи проводок — или гадать.
+                </li>
+                <li>
+                  <strong>Учёт ОС вне книги.</strong>
+                  ОС ведутся в отдельной таблице/модуле, не сверяемой с главной книгой. JPK_ST_KR показывает разъезд, которого раньше никто не видел.
+                </li>
+                <li>
+                  <strong>Контрагенты без NIP или с NIP «в разных форматах».</strong>
+                  В ERP без разделителей, в CRM с дефисами, в расчётах с префиксом PL. Для проверки это выглядит как три разных контрагента.
+                </li>
+                <li>
+                  <strong>Разъезд с JPK_VAT.</strong>
+                  Доход CIT и продажи VAT считаются независимо, без сверки разниц. Сопоставление файлов показывает разрыв.
+                </li>
+                <li>
+                  <strong>Корректировки в разных периодах.</strong>
+                  Корректировка VAT проведена в другом месяце, чем корректировка CIT. Формально может быть верно — но нужен ясный след, почему.
+                </li>
+                <li>
+                  <strong>Нет владельца процесса.</strong>
+                  Бухгалтерия отвечает за проводки, IT — за отправку, налоговый консультант — за маркеры. Когда файл не сходится, никто не знает, чья это проблема.
+                </li>
+              </ol>
+
+              <p>
+                <strong>6 из 7 ловушек — не техника.</strong> Это данные и процесс. Сгенерировать XML легко.
+                Трудно сделать так, чтобы данные в этом XML были согласованы, полны и совпадали с остальными отчётами.
+              </p>
+
+              <hr>
+
+              <h2 id="checklist">Чек-лист подготовки</h2>
+
+              <div class="diagram-card">
+                <div class="diagram-title">
+                  Путь к первой отправке
+                  <span class="diagram-hint">от «навести порядок» до «сгенерировать»</span>
+                </div>
+                <ol>
+                  <li>
+                    <strong>Определите свою дату старта.</strong>
+                    Проверьте, к какой волне графика относитесь и с какого налогового года нужно вести книги в структуре.
+                    Помните: считается начало года под обязанностью, а не срок отправки.
+                  </li>
+                  <li>
+                    <strong>Смаппьте план счетов на стандарт.</strong>
+                    Все счета, не только активные. Выловите счета-«сироты» и технические счета. Задокументируйте маппинг.
+                  </li>
+                  <li>
+                    <strong>Встройте налоговые маркеры в процесс проводок.</strong>
+                    Чтобы они возникали по ходу дела, а не вручную в декабре. Это изменение в способе работы, а не только в системе.
+                  </li>
+                  <li>
+                    <strong>Упорядочьте контрагентов.</strong>
+                    Единый формат NIP, дедупликация, устранение позиций типа «Разные». Согласуйте данные с KSeF и JPK_VAT.
+                  </li>
+                  <li>
+                    <strong>Свяжите учёт ОС с книгой.</strong>
+                    JPK_ST_KR должен сходиться с главной книгой по стоимости и амортизации. Сверьте сальдо.
+                  </li>
+                  <li>
+                    <strong>Протестируйте генерацию и согласованность.</strong>
+                    Сгенерируйте пробный JPK_KR_PD и JPK_ST_KR из рабочих данных и сопоставьте с JPK_VAT за тот же период. Выловите разницы до налоговой.
+                  </li>
+                  <li>
+                    <strong>Назначьте владельца процесса end-to-end.</strong>
+                    Один человек/роль, отвечающий за то, что данные, маркеры, отправка и согласованность «играют» вместе.
+                  </li>
+                </ol>
+              </div>
+
+              <hr>
+
+              <h2 id="narzedzia">Инструменты: готовые vs open-source</h2>
+
+              <p>
+                Большинство бухгалтерских систем на польском рынке добавляют или анонсируют модуль JPK_CIT. Если у вас нет команды разработчиков —
+                это самый простой путь. Если есть — open-source-слой даёт гибкость там, где готовые модули молчат: контроль согласованности, сверки между
+                JPK_CIT / JPK_VAT / KSeF, обработка исключений. <em>Объём и зрелость модулей уточняйте напрямую у поставщиков — поддержка JPK_CIT ещё дозревает.</em>
+              </p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr><th>Инструмент</th><th>Для чего</th><th>Ссылки</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>MyCompany (lsFusion)</strong></td>
+                      <td>Декларативная ERP-платформа, где книги, VAT и внеоборотные активы — одна модель данных. Легче держать согласованность JPK_CIT / JPK_VAT / KSeF, потому что данные не разбросаны по модулям. Полная польская локализация</td>
+                      <td><a href="https://mycompany.lsfusion.org/pl/" target="_blank" rel="noopener noreferrer">Site</a> · <a href="https://github.com/lsfusion-solutions/mycompany" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Appsmith</strong></td>
+                      <td>Внутренние панели для сверки данных, поиска разъездов между отчётами, ручной обработки исключений</td>
+                      <td><a href="https://www.appsmith.com/" target="_blank" rel="noopener noreferrer">Site</a> · <a href="https://github.com/appsmithorg/appsmith" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Metabase</strong></td>
+                      <td>Контрольные сводки: доход CIT vs продажи VAT, сальдо ОС vs главная книга, пробелы в маркерах</td>
+                      <td><a href="https://www.metabase.com/" target="_blank" rel="noopener noreferrer">Site</a> · <a href="https://github.com/metabase/metabase" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+                    </tr>
+                    <tr>
+                      <td><strong>n8n</strong></td>
+                      <td>Автоматизация: алерты о расхождениях, напоминания о сроках, роутинг задач владельцу процесса</td>
+                      <td><a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">Site</a> · <a href="https://github.com/n8n-io/n8n" target="_blank" rel="noopener noreferrer">GitHub</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <hr>
+
+              <h2 id="wniosek">Вывод: что сделать уже сейчас</h2>
+
+              <p>
+                JPK_CIT — это <strong>проект о данных</strong>, а не «новый файл на отправку». Компании, которые примут его за формальность в конце года,
+                в первом квартале обнаружат, что весь предыдущий год надо приводить в порядок задним числом. Те, кто упорядочит книги заранее,
+                отправят JPK_KR_PD одним движением.
+              </p>
+
+              <p>Три вещи, которые стоит сделать <em>в этом месяце</em>:</p>
+
+              <ol class="steps">
+                <li>
+                  <strong>Определите свою волну и дату старта.</strong> Проверьте, с какого налогового года нужно вести книги в структуре —
+                  это часто раньше, чем кажется, ведь считается начало года, а не срок отправки.
+                </li>
+                <li>
+                  <strong>Проведите аудит исходных данных.</strong> Маппинг счетов, налоговые маркеры, формат NIP контрагентов, согласованность
+                  учёта ОС с книгой. Это 80% работы — и то, что решает, сойдётся ли файл.
+                </li>
+                <li>
+                  <strong>Сопоставьте пробно с JPK_VAT.</strong> Сгенерируйте рабочий JPK_KR_PD и сравните с JPK_VAT за тот же период.
+                  Каждая разница, которую найдёте сейчас, — это разница, которую не найдёт налоговая.
+                </li>
+              </ol>
+
+              <hr>
+
+              <h2 id="faq">FAQ</h2>
+
+              <h3>Что такое JPK_CIT?</h3>
+              <p>
+                Это обязанность вести бухгалтерские книги с помощью ПО и передавать их налоговым органам в структурированном формате. Состоит из
+                двух структур: <strong>JPK_KR_PD</strong> (книги с налоговыми данными) и <strong>JPK_ST_KR</strong> (основные средства и НМА).
+                Обязанность введена поправкой к закону о CIT.
+              </p>
+
+              <h3>С какого момента действует и кого касается первым?</h3>
+              <p>
+                Поэтапно. За налоговый год после 31.12.2024 — крупнейшие плательщики CIT (доход &gt;50 млн EUR) и налоговые группы.
+                За год после 31.12.2025 — остальные плательщики CIT, подающие JPK_VAT. За год после 31.12.2026 — все остальные.
+              </p>
+
+              <h3>Когда отправлять впервые?</h3>
+              <p>
+                Раз в год, вместе с годовой декларацией CIT — до конца третьего месяца после окончания налогового года. Для года, совпадающего
+                с календарным, это обычно конец марта. Но книги нужно вести в структуре весь год, а не собирать их только к моменту отправки.
+              </p>
+
+              <h3>Как JPK_CIT связан с KSeF и JPK_VAT?</h3>
+              <p>
+                Данные книг должны быть согласованы с JPK_VAT и с фактурами из KSeF. Расхождение между доходом в книгах и продажами в JPK_VAT,
+                либо между проведённой фактурой и её аналогом в KSeF, — самый частый повод для проверки. Упорядочивание исходных данных до первой отправки критично.
+              </p>
+
+              <hr>
+
+              <h2 id="sources">Официальные источники</h2>
+              <ul>
+                <li><a href="https://www.podatki.gov.pl/cit/jpk-cit/" target="_blank" rel="noopener noreferrer">JPK_CIT на podatki.gov.pl — официальный портал</a></li>
+                <li><a href="https://www.gov.pl/web/finanse" target="_blank" rel="noopener noreferrer">Министерство финансов Польши — gov.pl</a></li>
+                <li><a href="https://www.podatki.gov.pl/jednolity-plik-kontrolny/" target="_blank" rel="noopener noreferrer">Jednolity Plik Kontrolny (JPK) — общая информация</a></li>
+              </ul>
+
+              <h2 id="feedback">Быстрый фидбэк</h2>
+              <div class="callout">
+                <strong>Было полезно?</strong>
+                <p>Короткий сигнал помогает нам выбирать темы следующих материалов.</p>
+
+                <div class="hero-actions">
+                  <button class="btn btn-primary" type="button" data-vote="like">
+                    👍 Полезно <span class="count" data-count="like">—</span>
+                  </button>
+
+                  <button class="btn btn-outline" type="button" data-vote="dislike">
+                    👎 Не очень <span class="count" data-count="dislike">—</span>
+                  </button>
+                </div>
+
+                <p class="sidebar-text">Без комментариев и аккаунтов.</p>
+              </div>
+
+              <h2 id="related-posts">Связанные материалы</h2>
+
+              <div class="callout">
+                <strong>Что ещё стоит прочитать:</strong>
+                <p>JPK_CIT связан с KSeF и JPK_VAT — больше практики на DevLab Blog:</p>
+                <ul>
+                  <li><a href="/posts/post14-ksef-2026-limit-10000-checklist.html">KSeF 2026: полный гайд — FA(3), ZAW-FA, штрафы и чек-лист ↗</a></li>
+                  <li><a href="/posts/post15-ksef-after-go-live-15-issues.html">KSeF после запуска: 15 проблем, которые вылезают через 2–3 месяца ↗</a></li>
+                  <li><a href="/posts/post12-ksef-low-code.html">KSeF в 2026: сроки, лимит 10 000 zł и практическая подготовка ↗</a></li>
+                </ul>
+              </div>
+
+              <footer class="post-footer-extended">
+                <div class="post-footer-meta">
+                  <div class="post-meta-tags">
+                    <span class="post-tag">JPK_CIT</span>
+                    <span class="post-tag">JPK_KR_PD</span>
+                    <span class="post-tag">JPK_ST_KR</span>
+                    <span class="post-tag">CIT</span>
+                    <span class="post-tag">Poland</span>
+                    <span class="post-tag">Compliance</span>
+                  </div>
+
+                  <div class="post-meta-secondary">
+                    <span>Опубликовано: 4 июля 2026</span>
+                    <span>·</span>
+                    <span>Чтение: ~14 мин</span>
+                    <span>·</span>
+                    <span class="post-views">Просмотры: <span class="count">—</span></span>
+                  </div>
+                </div>
+              </footer>
+
+              <section class="sidebar-block">
+                <p class="sidebar-text">
+                  Без спама — только заметки о JPK_CIT, KSeF, ERP и автоматизации, а также новых статьях.
+                </p>
+                <form class="newsletter-form"
+                      action="https://formsubmit.co/info@devlab.blog"
+                      method="POST">
+                  <input type="hidden" name="_next" value="https://ru.devlab.blog/thank-you.html">
+                  <input type="hidden" name="_captcha" value="false">
+                  <input type="text" name="_honey" style="display:none">
+
+                  <input type="email" name="email" class="field" placeholder="Ваш e-mail" required>
+                  <button class="btn btn-primary" type="submit">Подписаться</button>
+
+                  <p class="newsletter-note">
+                    Вы получите письмо с подтверждением.<br>
+                    Безопасно через FormSubmit.
+                  </p>
+                </form>
+              </section>
+
+            </section>
+
+            <div class="post-nav-links">
+              <a class="back" href="/#posts" style="margin-left: 0;">← Ко всем статьям</a>
+              <a class="back" href="/#categories" style="margin-right: 0;">Категории →</a>
+            </div>
+          </article>
+
+          <aside class="sidebar">
+            <section class="sidebar-block">
+              <h3 class="sidebar-title" id="topic-question-title">Предложить тему</h3>
+              <p class="sidebar-text">
+                Есть вопрос или идея для следующей статьи?
+                <a class="post-read" href="mailto:info@devlab.blog?subject=Vopros%20ili%20ideya%20dlya%20DevLab%20Blog">
+                  Напишите нам →
+                </a>
+              </p>
+            </section>
+
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">О блоге</h3>
+              <p class="sidebar-text">
+                DevLab Blog пишет об open-source ERP, модульных архитектурах и автоматизации low-code —
+                с упором на практические внедрения и реальные кейсы.
+              </p>
+            </section>
+
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">Что ещё посмотреть</h3>
+              <p class="sidebar-text">Вернитесь на главную или загляните в категории:</p>
+              <ul>
+                <li><a href="/">Все статьи</a></li>
+                <li><a href="/#categories">Категории</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт DevLab</a></li>
+              </ul>
+            </section>
+          </aside>
+
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper footer-grid">
+        <div>
+          <div class="footer-links">
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт</a>
+          </div>
+          <p class="footer-meta">
+            DevLab Blog — заметки об open-source ERP, модульных архитектурах и экспериментах с автоматизацией.
+          </p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; <span id="year"></span> DevLab Blog</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
