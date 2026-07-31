@@ -30,6 +30,8 @@
   </script>
 
   <!-- Main blog styles -->
+  <link rel="preconnect" href="https://uk.devlab.blog">
+  <link rel="dns-prefetch" href="https://uk.devlab.blog">
   <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
 
   <!-- Main blog scripts (year + search + views counter) -->
@@ -42,7 +44,7 @@
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": "https://ru.devlab.blog/posts/post16-erp-change-friendly-architecture-compare.html"
+      "@id": "https://ru.devlab.blog/posts/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.html"
     },
     "headline": "ERP, которая не превращается в дорогой тормоз: анализ архитектуры 1С / SAP / Dynamics / Odoo",
     "description": "Технический разбор архитектурных ограничений ERP по мотивам статей на Хабре: где именно возникают ограничения 1С и как похожие точки проявляются в SAP / Dynamics / Odoo. Пункт-в-пункт, с практическими последствиями для изменений, контроля и сопровождения.",
@@ -53,11 +55,11 @@
       "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" }
     },
     "datePublished": "2026-01-22",
-    "dateModified": "2026-01-22"
+    "dateModified": "2026-07-31"
   }
   </script>
 
-  <link rel="canonical" href="https://ru.devlab.blog/posts/post16-erp-change-friendly-architecture-compare.html">
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.html">
 
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -119,7 +121,7 @@
       <div class="wrapper">
         <div class="main-grid">
           <!-- ARTICLE -->
-          <article id="post16-erp-change-friendly-architecture-compare">
+          <article id="post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo">
             <div class="section-title">
               <span>Статья</span>
               <small><a class="back" href="/">← Назад ко всем статьям</a></small>
@@ -159,6 +161,41 @@
               </header>
 
             <!-- ===================================================== -->
+              <div class="callout">
+                <strong>Обновление 2026 — вердикт в одной таблице, потом длинная честная версия.</strong>
+                <p>
+                  С момента первой публикации это сравнение обострили две вещи. Разработка с помощью AI сильно подняла ценность
+                  <em>читаемой, декларативной</em> логики — AI поможет только с правилами, которые реально видит. А обязательные e-фактуры, как польский
+                  <a href="/posts/post14-ksef-2026-limit-10000-checklist.html">KSeF ↗</a>, превратили вопрос «сколько стоит изменить правило?» в реальный вопрос compliance, а не теорию.
+                </p>
+              </div>
+
+              <p><strong>Где каждый ERP превращается в тормоз — в одну строку:</strong></p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr><th>Система</th><th>Архитектурный тормоз</th><th>Цена нестандартного изменения правила</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><strong>1C</strong></td><td>Логика размазана между конфигурацией и кодом; сильная региональная привязка</td><td>Предсказуемо внутри своей модели, дорого — как только выходишь за неё</td></tr>
+                    <tr><td><strong>SAP</strong></td><td>Глубина и строгость, но изменение идёт через тяжёлые слои и governance</td><td>Высокая — консультанты и процесс есть часть каждого изменения</td></tr>
+                    <tr><td><strong>Dynamics</strong></td><td>Модель расширений плюс облачный цикл обновлений, который вы не контролируете</td><td>Средняя–высокая; кастомизации воюют с поездом обновлений</td></tr>
+                    <tr><td><strong>Odoo</strong></td><td>Одно правило растекается по моделям, вычисляемым полям, представлениям и cron</td><td>Растёт с каждой кастомизацией — ежегодный «налог на апгрейд»</td></tr>
+                    <tr><td><strong>Декларативный (lsFusion)</strong></td><td>Данные, вычисления и управление в одной модели</td><td>Описано один раз, в одном месте — цена, которую можно предсказать</td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Это вердикт. Остальное — доказательства: модель данных, слой запросов, выполнение, формы, язык и физическая модель —
+                плюс конкретный тест для демо. Связанное: <a href="/posts/post13-open-source-erp-low-code.html">ландшафт open-source ERP ↗</a>,
+                сравнение на уровне кода <a href="/posts/post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco.html">ERPNext vs MyCompany ↗</a> и
+                <a href="/posts/post20-odoo-honest-guide.html">честный разбор Odoo ↗</a>.
+              </p>
+
+              <hr>
+
            <nav class="post-toc" id="toc">
             <h2>Содержание</h2>
             <ol>
@@ -2053,6 +2090,8 @@
 
                 <div class="post-meta-secondary">
                   <span>Опубликовано: 22 янв 2026</span>
+                  <span>·</span>
+                  <span>Обновлено: 31 июля 2026</span>
                   <span>·</span>
                   <span>Примерно 10–12 мин чтения</span>
                   <span>·</span>
