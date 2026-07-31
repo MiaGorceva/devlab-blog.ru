@@ -31,6 +31,8 @@
 </script>
 
   <!-- Main blog styles -->
+  <link rel="preconnect" href="https://uk.devlab.blog">
+  <link rel="dns-prefetch" href="https://uk.devlab.blog">
   <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
 
   <!-- Main blog scripts (year + search + views counter) -->
@@ -60,7 +62,7 @@
       }
     },
     "datePublished": "2025-12-15",
-    "dateModified": "2025-12-15",
+    "dateModified": "2026-07-31",
     "inLanguage": "ru"
   }
   </script>
@@ -193,6 +195,41 @@
 
             <!-- ARTICLE BODY -->
             <section class="post-content">
+
+              <div class="callout">
+                <strong>Обновление (середина 2026): что изменилось и быстрый выбор за 30 секунд.</strong>
+                <p>
+                  С момента первой версии этого гайда изменились две вещи. Разработка с помощью AI тихо снизила стоимость
+                  <em>расширения</em> системы — поэтому «строить на платформе» теперь чаще выигрывает у «купить и воевать с апгрейдами», чем в 2024.
+                  А обязательные e-фактуры, как польский <a href="/posts/post14-ksef-2026-limit-10000-checklist.html">KSeF ↗</a>, превратили вопрос
+                  «где живут мои бизнес-правила?» в вопрос compliance, а не только архитектуры.
+                </p>
+              </div>
+
+              <p><strong>Быстрый выбор за 30 секунд — с чего начать, в зависимости от ситуации:</strong></p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr><th>Если вы…</th><th>Начните с</th><th>Почему</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>МСБ, в основном стандартные процессы</td><td>Готовый open-source ERP (ERPNext, Odoo Community)</td><td>Широта «из коробки»; не платите за изобретение стандартных потоков</td></tr>
+                    <tr><td>Процесс, который постоянно меняется</td><td>Platform-first / декларативный ERP (lsFusion)</td><td>Правила в одной модели, поэтому изменение остаётся дешёвым — см. <a href="/posts/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.html">разбор архитектуры ↗</a></td></tr>
+                    <tr><td>В основном дашборды и внутренние инструменты</td><td>Low-code слой (Appsmith, ToolJet, Budibase)</td><td>Это не замена ERP — операционный слой поверх того, что уже есть</td></tr>
+                    <tr><td>ЕС / Польша, давление e-фактур</td><td>Система, держащая правила централизованно + путь KSeF</td><td>Compliance — это подвижный набор правил, не разовая задача — <a href="/posts/post14-ksef-2026-limit-10000-checklist.html">гайд KSeF ↗</a></td></tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Остальная часть гайда — честная длинная версия этой таблицы: 12 систем, их компромиссы и ошибки, которые вылезают на втором году.
+                Сравнение на уровне кода — здесь:
+                <a href="/posts/post17-2026-02-06-erpnext-vs-mycompany-lsfusion-smb-tco.html">ERPNext vs MyCompany (lsFusion) ↗</a>.
+              </p>
+
+              <hr>
+
               <h2>Почему «open-source ERP» больше не означает один тип решения</h2>
                 <p>
                 Если читать большинство материалов про open-source ERP, может показаться,
@@ -676,6 +713,8 @@
 
                 <div class="post-meta-secondary">
                   <span>Опубликовано: 15 дек 2025</span>
+                  <span>·</span>
+                  <span>Обновлено: 31 июля 2026</span>
                   <span>·</span>
                   <span>Примерно 14 минут чтения</span>
                   <span>·</span>
