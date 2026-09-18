@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Как выставить фактуру в KSeF — пошагово (2026) – DevLab Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Практическое пошаговое руководство: как выставить фактуру в KSeF — от аутентификации, через заполнение FA(3), до отправки и номера KSeF. Плюс корректировка, аванс и когда стоит автоматизировать."
+  />
+
+  <link rel="icon" type="image/svg+xml" href="https://uk.devlab.blog/img/devlab-logo.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="https://uk.devlab.blog/img/devlab-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://uk.devlab.blog/img/devlab-favicon-180.png">
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent','default',{
+    analytics_storage:'denied', ad_storage:'denied', ad_user_data:'denied',
+    ad_personalization:'denied', functionality_storage:'granted', security_storage:'granted'
+  });
+</script>
+
+  <link rel="preconnect" href="https://uk.devlab.blog">
+  <link rel="dns-prefetch" href="https://uk.devlab.blog">
+  <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
+  <script src="https://uk.devlab.blog/js/script.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Как выставить фактуру в KSeF — пошагово (2026)",
+    "description": "Практическое руководство: как выставить фактуру в KSeF — аутентификация, FA(3), отправка и номер KSeF, плюс корректировки и автоматизация.",
+    "author": { "@type": "Organization", "name": "DevLab Blog" },
+    "publisher": { "@type": "Organization", "name": "DevLab", "logo": { "@type": "ImageObject", "url": "https://uk.devlab.blog/img/devlab-logo.svg" } },
+    "mainEntityOfPage": "https://ru.devlab.blog/posts/post23-jak-wystawic-fakture-ksef.html",
+    "datePublished": "2026-09-18",
+    "dateModified": "2026-09-18"
+  }
+  </script>
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post23-jak-wystawic-fakture-ksef.html">
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-WTZDV4K6');</script>
+</head>
+
+<body class="post-page">
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTZDV4K6"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="page">
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">
+              <img src="https://uk.devlab.blog/img/devlab-logo.svg" alt="DevLab Blog logo">
+            </div>
+            <div class="nav-meta">
+              <div class="nav-meta-title">DevLab Blog</div>
+              <div class="nav-meta-sub">Заметки об open-source ERP и автоматизации</div>
+            </div>
+          </a>
+          <div class="nav-group">
+            <div class="nav-links">
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Основной сайт</a>
+            </div>
+            <div class="nav-lang">
+              <a href="https://en.devlab.blog/">EN</a>
+              <a href="https://pl.devlab.blog/">PL</a>
+              <a href="/" class="active">RU</a>
+              <a href="https://uk.devlab.blog/">UA</a>
+            </div>
+          </div>
+          <div class="nav-cta">
+            <a href="/#posts" class="btn btn-outline">Просмотреть статьи</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
+          </div>
+          <button class="nav-toggle" aria-label="Переключить навигацию">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrapper">
+        <div class="main-grid">
+          <article>
+            <div class="section-title">
+              <span>Статья</span>
+              <small><a href="/">← Вернуться ко всем статьям</a></small>
+            </div>
+
+            <header>
+              <div class="post-meta">
+                <span>Регуляторика · KSeF</span>
+                <span>&middot;</span>
+                <span>Примерно 9 мин чтения</span>
+              </div>
+              <h1 class="hero-title">
+                Как выставить фактуру в KSeF — пошагово
+              </h1>
+              <p class="hero-text">
+                Первая фактура в KSeF вызывает больше всего вопросов: как войти, что заполнить и как понять, что
+                документ «прошёл». Ниже — практическое пошаговое руководство на бесплатных государственных
+                инструментах, плюс частые случаи (корректировка, аванс) и момент, когда стоит это автоматизировать.
+              </p>
+              <figure class="post-hero">
+                <img src="https://uk.devlab.blog/img/post12-ksef-low-code-poland.webp" alt="Как выставить фактуру в KSeF пошагово">
+              </figure>
+            </header>
+
+            <section class="post-content">
+              <h2>1. Что нужно иметь до начала</h2>
+              <p>Для выставления фактуры в KSeF нужны две вещи: способ аутентификации и доступ к системе.</p>
+              <ul>
+                <li><strong>Аутентификация</strong> — чаще всего Profil Zaufany, квалифицированная подпись, квалифицированная печать или токен KSeF, сгенерированный в системе.</li>
+                <li><strong>Права</strong> — у владельца фирмы они автоматически; сотруднику или бухгалтерии права нужно выдать в KSeF.</li>
+                <li><strong>Данные фактуры</strong> — NIP покупателя, позиции, ставки НДС, даты. Формат KSeF — структурированная схема <strong>FA(3)</strong>.</li>
+              </ul>
+              <p class="callout">
+                Ещё не знаете сроки и правила? Начните с:
+                <a href="/posts/post14-ksef-2026-limit-10000-checklist.html">KSeF в 2026: график и практическая подготовка ↗</a>
+                и <a href="/posts/post22-darmowy-program-do-faktur-ksef.html">Бесплатная программа для фактур KSeF: какие есть варианты ↗</a>.
+              </p>
+
+              <h2>2. Пошагово в Aplikacja Podatnika KSeF (бесплатно)</h2>
+              <p>Самый простой бесплатный путь — государственное приложение Aplikacja Podatnika KSeF:</p>
+              <ul>
+                <li><strong>Шаг 1.</strong> Войдите в приложение (например, через Profil Zaufany) и выберите контекст фирмы (свой NIP).</li>
+                <li><strong>Шаг 2.</strong> Выберите «Выставить фактуру» и форму по схеме FA(3).</li>
+                <li><strong>Шаг 3.</strong> Заполните данные: продавец, покупатель (NIP), позиции, ставки НДС, даты продажи и выставления.</li>
+                <li><strong>Шаг 4.</strong> Проверьте сводку — система валидирует обязательные поля и базовую логику.</li>
+                <li><strong>Шаг 5.</strong> Отправьте фактуру. После приёма KSeF присвоит ей <strong>номер KSeF</strong> и сформирует <strong>UPO</strong> (официальное подтверждение приёма) — это доказательство, что документ корректно принят.</li>
+              </ul>
+              <p>
+                Датой выставления структурированной фактуры, как правило, считается дата её отправки в KSeF. Номер
+                KSeF и UPO стоит сохранить — это подтверждение оборота документа.
+              </p>
+
+              <h2>3. Частые случаи</h2>
+              <ul>
+                <li><strong>Корректирующая фактура</strong> — тоже выставляется в KSeF, с указанием номера KSeF исходной фактуры.</li>
+                <li><strong>Авансовая фактура</strong> — поддерживается схемой FA(3); не забудьте связать с итоговой фактурой.</li>
+                <li><strong>Продажа физлицу (потребителю)</strong> — тут особые правила; сверьтесь с актуальными указаниями, прежде чем принимать это за правило.</li>
+                <li><strong>Ryczałt / малая фирма</strong> — сам механизм выставления такой же; отличается объём данных и расчётов.</li>
+              </ul>
+
+              <h2>4. Когда стоит автоматизировать (вместо ручного ввода)</h2>
+              <p>
+                Ручное выставление в госприложении нормально при нескольких фактурах. Когда их много — или они
+                возникают из заказов, склада, e-commerce — стоит, чтобы фактура создавалась автоматически в вашей
+                системе и сама уходила в KSeF. Тут в игру входят программы: платные пакеты или бесплатные open-source.
+              </p>
+
+              <div class="callout">
+                <strong>Несколько реальных open-source вариантов — с плюсами и минусами (опционально, без обязательств):</strong>
+                <ul>
+                  <li>
+                    <a href="https://demo.lsfusion.org/mycompany" target="_blank" rel="noopener noreferrer">MyCompany</a>
+                    — бесплатная open-source ERP (Apache-2.0) на платформе lsFusion.
+                    <br><strong>Плюс:</strong> это полноценная ERP — фактуры возникают из заказов/склада, автоматизация процессов; публичное демо включает выставление фактур.
+                    <strong>Минус:</strong> как платформа обычно требует настройки под свои процессы — порог входа выше, чем у простого приложения.
+                  </li>
+                  <li>
+                    <a href="https://www.dolibarr.org" target="_blank" rel="noopener noreferrer">Dolibarr</a>
+                    — зрелая открытая ERP/CRM с большим сообществом.
+                    <br><strong>Плюс:</strong> много готовых модулей, проверена в тысячах компаний.
+                    <strong>Минус:</strong> поддержка польского KSeF обычно через сторонние модули, не «из коробки».
+                  </li>
+                  <li>
+                    <a href="https://www.invoiceninja.com" target="_blank" rel="noopener noreferrer">Invoice Ninja</a>
+                    — лёгкое open-source приложение для фактурирования.
+                    <br><strong>Плюс:</strong> простое и быстрое на старте, заточено под фактуры и платежи.
+                    <strong>Минус:</strong> это не полноценная ERP; без функций, специфичных для KSeF.
+                  </li>
+                </ul>
+                <p class="sidebar-text">
+                  Поддержка KSeF различается между инструментами — стоит проверить в каждом. Это лишь примеры.
+                </p>
+              </div>
+
+              <h2>5. Частые ошибки — что проверить</h2>
+              <ul>
+                <li>неверный NIP покупателя или опечатка в данных — валидация это поймает, но замедлит работу;</li>
+                <li>нет прав у сотрудника/бухгалтерии — фактура «не хочет отправляться»;</li>
+                <li>не сохранён номер KSeF / UPO — потом сложнее подтвердить оборот;</li>
+                <li>отношение к KSeF как к PDF — это структурированный XML, а не вложение.</li>
+              </ul>
+
+              <h2>6. Итог</h2>
+              <p>
+                Выставление фактуры в KSeF сводится к: аутентификация → заполнение FA(3) → отправка → получение
+                номера KSeF и UPO. Бесплатно это делается в Aplikacja Podatnika KSeF; при большем масштабе стоит,
+                чтобы фактуры создавались автоматически в вашей системе — платной или open-source.
+              </p>
+            </section>
+
+             <h2 id="feedback">Быстрый фидбек</h2>
+              <div class="callout">
+                <strong>Было полезно?</strong>
+                <p>Короткий сигнал помогает нам выбирать следующие темы.</p>
+                <div class="hero-actions">
+                  <button class="btn btn-primary" type="button" data-vote="like">👍 Полезно <span class="count" data-count="like">—</span></button>
+                  <button class="btn btn-outline" type="button" data-vote="dislike">👎 Не очень <span class="count" data-count="dislike">—</span></button>
+                </div>
+                <p class="sidebar-text">Без комментариев и аккаунтов.</p>
+              </div>
+
+            <h2 id="related-posts">Похожие статьи</h2>
+              <div class="callout">
+                <strong>Читать дальше:</strong>
+                <p>Больше практических заметок о KSeF и e-фактурах.</p>
+                <ul>
+                  <li><a href="/posts/post22-darmowy-program-do-faktur-ksef.html">Бесплатная программа для фактур KSeF: какие есть варианты ↗</a></li>
+                  <li><a href="/posts/post14-ksef-2026-limit-10000-checklist.html">KSeF в 2026: график, исключение 10 000 зл и подготовка ↗</a></li>
+                  <li><a href="/posts/post15-ksef-after-go-live-15-issues.html">KSeF после запуска: 15 проблем через 2–3 месяца ↗</a></li>
+                </ul>
+              </div>
+
+          <div class="post-nav-links">
+            <a class="post-read" href="/#posts" >← Вернуться ко всем статьям</a>
+            <a class="post-read" href="/#categories" > Просмотреть все категории →</a>
+          </div>
+
+            <footer class="post-footer-extended">
+              <div class="post-footer-meta">
+                <div class="post-meta-tags">
+                  <span class="post-tag">KSeF</span>
+                  <span class="post-tag">E-invoicing</span>
+                  <span class="post-tag">Фактуры</span>
+                  <span class="post-tag">Инструкция</span>
+                  <span class="post-tag">Польша</span>
+                </div>
+                <div class="post-meta-secondary">
+                  <span>Опубликовано: 18 сен 2026</span>
+                  <span>·</span>
+                  <span>Примерно 9 мин чтения</span>
+                  <span>·</span>
+                  <span class="post-views">Просмотры: <span class="count">—</span></span>
+                </div>
+              </div>
+            </footer>
+
+        <section class="sidebar-block">
+            <p class="sidebar-text">
+              Без спама – только периодические заметки о дизайне ERP, экспериментах с автоматизацией и новых статьях.
+            </p>
+            <form class="newsletter-form" action="https://formsubmit.co/info@devlab.blog" method="POST">
+              <input type="hidden" name="_next" value="https://ru.devlab.blog/thank-you.html">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="text" name="_honey" style="display:none">
+              <input type="email" name="email" class="field" placeholder="Ваш email адрес" required>
+              <button class="btn btn-primary" type="submit">Подписаться</button>
+              <p class="newsletter-note">Вы получите письмо с подтверждением.<br>Безопасно через FormSubmit.</p>
+            </form>
+          </section>
+
+          </article>
+
+          <aside class="sidebar">
+            <section class="sidebar-block">
+              <h3 class="sidebar-title" id="topic-question-title">Предложить тему</h3>
+              <p class="sidebar-text">
+                Есть вопрос или идея для будущей статьи?
+                <a class="post-read" href="mailto:info@devlab.blog?subject=Вопрос%20или%20идея%20для%20DevLab%20Blog">Напишите нам →</a>
+              </p>
+            </section>
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">О блоге</h3>
+              <p class="sidebar-text">
+                DevLab Blog сосредоточен на open-source ERP, декларативных платформах и low-code автоматизации:
+                как адаптировать системы под требования вроде KSeF без бесконечных IT проектов.
+              </p>
+            </section>
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">Больше для изучения</h3>
+              <ul class="sidebar-list">
+                <li><a href="/">Все статьи блога</a></li>
+                <li><a href="/#categories">Просмотр по категориям</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Основной сайт DevLab</a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper footer-grid">
+        <div>
+          <div class="footer-links">
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Основной сайт</a>
+          </div>
+          <p class="footer-meta">DevLab Blog – заметки об open-source ERP, low-code и автоматизации в реальных компаниях.</p>
+        </div>
+        <div class="footer-meta"><p>&copy; <span id="year"></span> DevLab Blog</p></div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
