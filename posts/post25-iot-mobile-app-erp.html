@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>От датчика к действию: почему IoT нужны мобильное приложение и ERP, а не ещё один дашборд – DevLab Blog</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Большинство IoT-проектов застревают, потому что данные умирают в дашборде, по которому никто не действует. Ценность появляется, только когда показание становится задачей в телефоне исполнителя и записью в ERP. Как собрать петлю датчик → мобильное приложение → ERP одной моделью данных вместо трёх хрупких интеграций — со сквозным примером по холодовой цепи." />
+  <meta name="keywords" content="IoT, IIoT, промышленный IoT, интеграция IoT и ERP, мобильное приложение IoT, датчик в ERP, выездные бригады, архитектура IoT, одна модель данных, lsFusion, MITE, дашборд IoT, автоматизация заявок, холодовая цепь" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="https://uk.devlab.blog/img/devlab-logo.svg">
+  <link rel="alternate icon" type="image/png" sizes="32x32" href="https://uk.devlab.blog/img/devlab-favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://uk.devlab.blog/img/devlab-favicon-180.png">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent','default',{
+      analytics_storage:'denied',
+      ad_storage:'denied',
+      ad_user_data:'denied',
+      ad_personalization:'denied',
+      functionality_storage:'granted',
+      security_storage:'granted'
+    });
+  </script>
+
+  <!-- Main blog styles -->
+  <link rel="preconnect" href="https://uk.devlab.blog">
+  <link rel="dns-prefetch" href="https://uk.devlab.blog">
+  <link rel="stylesheet" href="https://uk.devlab.blog/style/devlab-style.css">
+
+  <!-- Main blog scripts -->
+  <script src="https://uk.devlab.blog/js/script.js" defer></script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://ru.devlab.blog/posts/post25-iot-mobile-app-erp.html"
+    },
+    "headline": "От датчика к действию: почему IoT нужны мобильное приложение и ERP, а не ещё один дашборд",
+    "description": "IoT-проекты умирают не из-за датчиков, а в дашборде, по которому никто не действует. Ценность появляется, когда показание становится задачей в телефоне и записью в ERP — и почему петлю датчик → мобильное приложение → ERP лучше описывать одной моделью, а не тремя интеграциями.",
+    "author": {
+      "@type": "Organization",
+      "name": "DevLab Blog"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "DevLab",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://uk.devlab.blog/img/devlab-logo.svg"
+      }
+    },
+    "datePublished": "2026-11-02",
+    "dateModified": "2026-11-02"
+  }
+  </script>
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://ru.devlab.blog/posts/post25-iot-mobile-app-erp.html">
+
+  <!-- Google Tag Manager -->
+  <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WTZDV4K6');
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+
+<body class="post-page">
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WTZDV4K6"
+            height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <div class="page">
+    <header>
+      <div class="wrapper">
+        <nav class="nav">
+          <a href="/" class="nav-brand">
+            <div class="nav-logo" aria-hidden="true">
+              <img src="https://uk.devlab.blog/img/devlab-logo.svg" alt="DevLab Blog logo">
+            </div>
+            <div class="nav-meta">
+              <div class="nav-meta-title">DevLab Blog</div>
+              <div class="nav-meta-sub">Open-source ERP &amp; automation notes</div>
+            </div>
+          </a>
+
+          <div class="nav-group">
+            <div class="nav-links">
+              <a href="/#posts">Статьи</a>
+              <a href="/#categories">Категории</a>
+              <a href="/#about">О блоге</a>
+              <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт</a>
+            </div>
+            <div class="nav-lang">
+              <a href="https://en.devlab.blog/">EN</a>
+              <a href="https://pl.devlab.blog/">PL</a>
+              <a href="https://ru.devlab.blog/" class="active">RU</a>
+              <a href="https://uk.devlab.blog/">UA</a>
+            </div>
+          </div>
+
+          <div class="nav-cta">
+            <a href="/#posts" class="btn btn-outline">К статьям</a>
+            <a href="/#about" class="btn btn-primary">Что это?</a>
+          </div>
+
+          <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="wrapper">
+        <div class="main-grid">
+          <article id="post-iot-mobile-app-erp">
+            <div class="section-title">
+              <span>Статья</span>
+              <small><a class="back" href="/">← Ко всем статьям</a></small>
+            </div>
+
+            <header>
+              <div class="post-meta">
+                <span>IIoT · Архитектура</span>
+                <span>&middot;</span>
+                <span>Чтение ~9 мин</span>
+                <span>&middot;</span>
+                <span>Паттерны интеграции 2026</span>
+                <span>&middot;</span>
+                <span>Опубликовано 2 ноя 2026</span>
+              </div>
+
+              <h1 class="hero-title">От датчика к действию: почему IoT нужны мобильное приложение и ERP, а не ещё один дашборд</h1>
+
+              <p class="hero-text">Дашборд показывает проблему. Он никогда её не решает. Окупаются те проекты, где петля замыкается: показание становится задачей в телефоне техника и записью в ERP. Разбираем, почему настоящий продукт — это цепочка <strong>датчик → мобильное приложение → ERP</strong>, и почему она работает лучше одной моделью данных, а не склейкой трёх вендоров.</p>
+
+              <figure class="post-hero">
+                <img
+                  src="https://uk.devlab.blog/img/post18-iiot-platforms-growth-not-cost.webp"
+                  alt="Показание датчика превращается в задачу в телефоне и запись в ERP — петля действия IoT"
+                  loading="eager"
+                  decoding="async"
+                >
+              </figure>
+            </header>
+
+            <section class="post-content">
+
+              <!-- TL;DR -->
+              <div class="post-quick">
+                <p class="post-quick__title">Если коротко</p>
+                <p class="post-quick__text">
+                  IoT-пилоты гибнут не от плохих датчиков — они гибнут в дашборде, где данные <em>видят</em>, но по ним не <em>действуют</em>. Ценность появляется, только когда петля замыкается: показание доходит до <strong>мобильного приложения</strong>, где исполнитель что-то делает на месте, и попадает в <strong>ERP</strong>, где становится заявкой, списанием, дозаказом или записью для аудита. А решение, от которого зависит ваш счёт за интеграции, — это одно: петля собрана из <strong>трёх склеенных вендоров</strong> или из <strong>одной модели данных</strong>.
+                </p>
+              </div>
+
+              <!-- Table of contents -->
+              <nav class="post-toc sidebar-block" aria-label="Содержание">
+                <h3 class="sidebar-title">Содержание</h3>
+                <ol>
+                  <li><a class="post-read" href="#part-1">Кладбище дашбордов</a></li>
+                  <li><a class="post-read" href="#part-2">Петля, которая реально работает</a></li>
+                  <li class="has-children">
+                    <a class="post-read" href="#part-3">Три слоя</a>
+                    <ol>
+                      <li><a class="post-read" href="#layer-sensor">Датчик — что</a></li>
+                      <li><a class="post-read" href="#layer-mobile">Мобильное — кто и что сейчас</a></li>
+                      <li><a class="post-read" href="#layer-erp">ERP — сколько стоит и что планировать</a></li>
+                    </ol>
+                  </li>
+                  <li><a class="post-read" href="#part-4">Одна модель против трёх интеграций</a></li>
+                  <li><a class="post-read" href="#part-5">Сквозной пример: нарушение холодовой цепи</a></li>
+                  <li><a class="post-read" href="#part-6">Чеклист: дашборд или петля?</a></li>
+                </ol>
+              </nav>
+
+              <!-- ============== Part 1 ============== -->
+              <h2 id="part-1">Кладбище дашбордов</h2>
+
+              <p>Зайдите в большинство компаний, которые «сделали IoT», и вы найдёте один и тот же артефакт: экран на стене, усыпанный шкалами и зелёными точками, на который неделями никто не смотрел. Датчики работают. Данные идут. Графики, честно говоря, красивые. И в том, как работает бизнес, не изменилось ничего.</p>
+
+              <p>Так IoT-проекты тихо и проваливаются. Не из-за поломки железа — из-за дашборда, который отвечает на вопрос, который никто не задавал. Примерно 70–75% инициатив так и не доходят до устойчивого продакшена, и самая частая причина не техническая: система <strong>сообщает</strong> о состоянии вместо того, чтобы <strong>запускать</strong> действие. Дашборд перекладывает работу «решить и сделать» на человека, который и так загружен, — поэтому чаще всего это не делается.</p>
+
+              <p>Тест жёсткий и простой. Возьмите любое показание, которое показывает ваша система. Спросите: <em>когда это число уйдёт не туда — что произойдёт дальше, автоматически?</em> Если честный ответ — «кто-нибудь заметит, когда-нибудь, и начнёт обзванивать», то у вас нет IoT-продукта. У вас дорогой термометр с веб-страницей.</p>
+
+              <div class="callout">
+                <strong>Важная переформулировка</strong>
+                <p>Дашборд — это <em>существительное</em>: вещь, на которую смотрят. А ценность — в <em>глаголе</em>: в том, что происходит. Вся задача IoT-проекта — превратить существительное в глагол: показание → решение → действие → запись. Дашборд — в лучшем случае побочный эффект петли, которая уже крутится сама.</p>
+              </div>
+
+              <hr>
+
+              <!-- ============== Part 2 ============== -->
+              <h2 id="part-2">Петля, которая реально работает</h2>
+
+              <p>Каждый окупившийся IoT-проект крутит одну и ту же петлю из четырёх шагов. Пропустите любой шаг — и вы снова у экрана на стене.</p>
+
+              <div class="diagram-card">
+                <div class="diagram-title">
+                  Петля действия
+                  <span class="diagram-hint">измерить → решить → сделать → записать</span>
+                </div>
+                <ol>
+                  <li><strong>Измерить.</strong> Датчик сообщает значение — температуру, вибрацию, местоположение, уровень. С этой частью справляются все.</li>
+                  <li><strong>Решить.</strong> Значение сопоставляется с контекстом — порогом, графиком, нормой, открытой заявкой — и превращается в суждение: это норма / это требует человека / это требует человека <em>прямо сейчас</em>.</li>
+                  <li><strong>Сделать.</strong> Конкретный человек получает конкретную инструкцию там, где он уже работает, — в телефоне — и делает что-то физическое в реальном мире.</li>
+                  <li><strong>Записать.</strong> Что произошло — возвращается в систему учёта, в ERP, как заявка, списание, дозаказ, подписанная запись соответствия. Теперь петля может учиться и выставлять счета.</li>
+                </ol>
+              </div>
+
+              <p>Обратите внимание, где живут две половины. <strong>Измерить</strong> и <strong>решить</strong> — работа IoT-платформы, домашняя территория дашборда. <strong>Сделать</strong> происходит в <strong>мобильном приложении</strong>, потому что люди, которые чинят вещи, на ногах, а не за столом. <strong>Записать</strong> происходит в <strong>ERP</strong>, потому что именно там уже живут деньги, активы и обязательства. Дашборд закрывает один шаг из четырёх — именно поэтому сам по себе он ничего не меняет.</p>
+
+              <hr>
+
+              <!-- ============== Part 3 ============== -->
+              <h2 id="part-3">Три слоя — для чего на самом деле каждый</h2>
+              <p>У каждого слоя своя задача. Ошибка — блестяще построить один из них, а два других оставить на «потом разберёмся». «Потом» — это как раз место, где проект умирает.</p>
+
+              <h3 id="layer-sensor">Датчик говорит <em>что</em></h3>
+              <p>Этот слой отвечает на один вопрос: каково состояние физического мира прямо сейчас? Число плюс правило — «4&nbsp;°C, лимит 8&nbsp;°C» — это всё, что он вам должен. Это же слой, в который команды переинвестируют: больше датчиков, выше частота опроса, красивее графики. Но показание не имеет ценности, пока что-то его не потребляет. Температура на 3 градуса выше нормы — это пустяк, пока она не стала решением. Сделайте этот слой <em>достаточно хорошим</em> и надёжным, а настоящую энергию тратьте ниже по цепочке.</p>
+
+              <h3 id="layer-mobile">Мобильное приложение превращает это в <em>кто и что сейчас</em></h3>
+              <p>Это слой, которого почти всегда не хватает, — и именно здесь меняется поведение. Люди, которые действуют по физическим проблемам, — это техники, водители, персонал магазина, агрономы, операторы линии. Они мобильны по определению. Проблема, которая приходит письмом в офисный ящик, — это проблема, которая ждёт; проблема, которая приходит задачей в телефон в кармане, — это проблема, которую решают.</p>
+              <p>Полезное выездное приложение делает несколько неброских вещей очень хорошо: оно ставит <strong>одну понятную задачу</strong> («Витрина&nbsp;3 в магазине&nbsp;12 перегрелась — проверь и подтверди»), работает <strong>офлайн</strong> в холодильном зале или подвале без связи, даёт приложить <strong>фото</strong> и подтверждение в одно касание и отправляет результат в тот же момент, как появляется связь. Вот и вся разница между данными, которые видят, и работой, которую сделали.</p>
+
+              <h3 id="layer-erp">ERP превращает это в <em>сколько стоит и что планировать</em></h3>
+              <p>Показание и ремонт — это события. ERP — место, где они становятся <em>бизнес-фактами</em>: актив с историей обслуживания, заявка со стоимостью, списанный товар, деталь, которую нужно дозаказать, запись соответствия, которую примет аудитор. Без этого слоя вы можете починить холодильник, но не можете выставить счёт клиенту, доказать, что холодовая цепь выдержана, или заметить, что этот же агрегат отказал уже трижды за квартал и его пора менять.</p>
+              <p>Это же слой, который <strong>замыкает петлю</strong>: накопленная им история — то, что делает шаг «решить» умнее: пороги, настроенные на реальный паттерн отказов, обслуживание по плану до поломки, а не после. Дашборд забывает всё в тот момент, как вы отвели взгляд. ERP помнит — а память и есть то, что превращает алерты в предвидение.</p>
+
+              <hr>
+
+              <!-- ============== Part 4 ============== -->
+              <h2 id="part-4">Одна модель данных против трёх интеграций</h2>
+
+              <p>Итак, нужны все три слоя. Архитектурный вопрос — как вы их получите, и именно он тихо задаёт ваш реальный бюджет. Дорог две.</p>
+
+              <p><strong>Дорога первая: склеить трёх вендоров.</strong> IoT-платформа для приёма данных и дашбордов, платформа мобильных приложений (или приложение на заказ) для поля и ERP для записей. Каждая по отдельности нормальна. Цена — в швах: три модели данных, которые надо держать синхронными, три вендорских релизных цикла, три места, куда надо добавить одно новое поле, и слой интеграции, который кто-то должен владеть вечно. Счёт за лицензии, которого вы избежали на open-source-платформе, возвращается — с процентами — счётом за баги синхронизации.</p>
+
+              <p><strong>Дорога вторая: описать всю петлю одной моделью.</strong> Правило датчика, задача, которая срабатывает, мобильная форма, которую заполняет исполнитель, и запись ERP, которую она пишет, — это не три системы, говорящие через API, а одно описание одного процесса. Поменяйте процесс один раз — и все три поверхности следуют за ним. Вот что значит <em>platform-first</em>, и это прямая противоположность привычке «дашборд прежде всего».</p>
+
+              <div class="dev-table-wrap">
+                <table class="dev-table">
+                  <thead>
+                    <tr>
+                      <th>Что нужно</th>
+                      <th>Три склеенных вендора</th>
+                      <th>Одна модель данных</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Приём данных и правила</td>
+                      <td>IoT-платформа A</td>
+                      <td>Часть модели</td>
+                    </tr>
+                    <tr>
+                      <td>Выездное мобильное приложение</td>
+                      <td>Платформа B (или заказная разработка)</td>
+                      <td>Генерируется из модели</td>
+                    </tr>
+                    <tr>
+                      <td>Записи, стоимость, соответствие</td>
+                      <td>ERP C</td>
+                      <td>Генерируется из модели</td>
+                    </tr>
+                    <tr>
+                      <td>Добавить одно поле насквозь</td>
+                      <td>Править в 3 местах + передеплой 3 систем</td>
+                      <td>Правка один раз, все поверхности следуют</td>
+                    </tr>
+                    <tr>
+                      <td>Значение разошлось</td>
+                      <td>Чей это баг? Отлаживать швы</td>
+                      <td>Нет шва — один источник истины</td>
+                    </tr>
+                    <tr>
+                      <td>Кто владеет интеграцией</td>
+                      <td>Вы, вечно</td>
+                      <td>Никто — её нет</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="callout">
+                <strong><a href="https://mite.club/" target="_blank" rel="noopener noreferrer">MITE — петля как одна модель, а не три интеграции</a></strong>
+                <p>Это и есть вся идея <a href="https://mite.club/" target="_blank" rel="noopener noreferrer">MITE</a>. Платформа построена на декларативном движке lsFusion, где «датчик + порог + открытая заявка + норма → задача → запись» описывается одной моделью. Из этого единственного описания платформа генерирует и приём данных IoT, и выездное мобильное приложение, и формы ERP — и в реальном времени пересчитывает зависимые значения при изменении входа. Между этими тремя нет слоя интеграции, потому что это не три системы: это одна. Вы перестаёте покупать дашборд и начинаете владеть петлёй. Цены не публичны — запросите у вендора; а если ваша задача честно сводится к «датчик → SMS», это избыточно.</p>
+              </div>
+
+              <p>Ни одна из дорог не правильна автоматически. Если ваша IoT-задача — одна узкая вещь, горсть датчиков и очевидная человеческая реакция, то три дешёвых инструмента, склеенных неплотно, могут быть вполне разумны. Дорога «одной модели» отбивает себя, когда петля нетривиальна и <em>часто меняется</em>: вот тогда «править одно описание вместо трёх систем» перестаёт быть аргументом об элегантности и становится всем бюджетом.</p>
+
+              <hr>
+
+              <!-- ============== Part 5 ============== -->
+              <h2 id="part-5">Сквозной пример: нарушение холодовой цепи</h2>
+              <p>Под абстракцию легко кивать. Вот та же петля как одна конкретная история — холодильная витрина в магазине уходит из диапазона.</p>
+
+              <ol class="steps">
+                <li><strong>Измерить.</strong> Температурный зонд в витрине&nbsp;3 магазина&nbsp;12 показывает 9&nbsp;°C. Лимит — 8&nbsp;°C. Показание растёт уже двадцать минут — это не оставленная дверца, а реальный дрейф.</li>
+                <li><strong>Решить.</strong> Система не просто пересекает порог и кричит. Она проверяет контекст: в этой витрине молочка и готовые блюда в охлаждении; ближайшее окно сервиса — четверг; смена-супервайзер на месте до 22:00. Вердикт — человек нужен сейчас, и она знает, какой человек.</li>
+                <li><strong>Сделать (мобильное).</strong> На телефон супервайзера падает задача: <em>«Витрина&nbsp;3 перегрелась — осмотри и подтверди действие».</em> Она подходит, находит обмёрзший конденсатор, перекладывает скоропорт в витрину&nbsp;5, делает фото и жмёт «товар переложен, нужен сервис». В зале она офлайн; синхронизируется, когда вернётся к кассе.</li>
+                <li><strong>Записать (ERP).</strong> ERP открывает сервисную заявку на конденсатор, помечает переложенный товар, списывает через кассу два лотка, вышедшие за безопасное окно, и пишет запись лога холодовой цепи с отметкой времени, которую примет аудитор сети. История отказов этого агрегата теперь показывает третью поломку за квартал — и план обслуживания предлагает замену, а не очередной ремонт.</li>
+              </ol>
+
+              <p>Посчитайте, в скольких местах обычный дашборд остановился бы: на первом шаге, красной плиткой, за которой никто не следил. Всё, что после, — нужный человек, нужное действие, списание, запись для аудита, вывод «менять, а не чинить» — это и есть часть, которая окупает проект. И каждый шаг после первого произошёл где-то, что <em>не</em> дашборд.</p>
+
+              <hr>
+
+              <!-- ============== Part 6 ============== -->
+              <h2 id="part-6">Чеклист: у вас IoT — это дашборд или петля?</h2>
+              <p>Прогоните свой проект — или тот, что вам продаёт вендор, — по этим вопросам. «Нет» — это место, где петля разорвана.</p>
+
+              <ol class="steps">
+                <li><strong>Когда показание уходит не туда, конкретный человек получает конкретную задачу — автоматически?</strong> Или всё держится на том, что кто-то случайно смотрит на экран?</li>
+                <li><strong>Эта задача приходит туда, где идёт работа, — в телефон, с поддержкой офлайна?</strong> Или в ящик обратно в офис?</li>
+                <li><strong>Результат попадает в вашу систему учёта?</strong> Сможете ли вы потом доказать, что произошло, выставить за это счёт и пройти аудит — не перенабирая ничего руками?</li>
+                <li><strong>Система умнеет от собственной истории?</strong> Повторяющийся отказ меняет план — или каждый алерт начинается с нуля?</li>
+                <li><strong>Чтобы добавить одно новое поле в датчик, приложение и запись — сколько систем вы правите?</strong> Одна — дёшево развивать; три — там изменения тихо перестают происходить.</li>
+                <li><strong>Кто владеет интеграцией между слоями?</strong> Если ответ «мы, вечно» — заложите это в цену ещё до старта.</li>
+              </ol>
+
+              <div class="callout">
+                <strong>Версия в одну строку</strong>
+                <p>Не спрашивайте «что покажет дашборд?». Спрашивайте «когда число уйдёт не туда — кто и что сделает, и где это запишется?». Если вы отвечаете на это чисто — вы строите петлю. Если нет — вы покупаете экран на стену, какими бы красивыми ни были графики. Платформы, стоящие ваших денег, — те, что считают датчик, телефон и ERP одним целым, потому что ценность никогда не была в отдельном слое. Она всегда была в том, что петля замыкается.</p>
+              </div>
+
+            </section>
+
+            <footer class="post-footer-extended">
+              <div class="post-footer-meta">
+                <div class="post-meta-tags">
+                  <span class="post-tag">IIoT</span>
+                  <span class="post-tag">Архитектура</span>
+                  <span class="post-tag">Мобильное</span>
+                  <span class="post-tag">Интеграция с ERP</span>
+                </div>
+
+                <div class="post-meta-secondary">
+                  <span>Опубликовано: 2 ноя 2026</span>
+                  <span>·</span>
+                  <span>Чтение ~9 мин</span>
+                  <span>·</span>
+                  <span class="post-views">Просмотры: <span class="count">—</span></span>
+                </div>
+              </div>
+            </footer>
+
+            <section class="sidebar-block">
+              <p class="sidebar-text">
+                Без спама — только редкие заметки о проектировании ERP, экспериментах с автоматизацией и новых статьях.
+              </p>
+
+              <form class="newsletter-form" action="https://assets.mailerlite.com/jsonp/2679655/forms/200577209364121282/subscribe" method="POST">
+                <input type="hidden" name="ml-submit" value="1">
+                <input type="hidden" name="anticsrf" value="true">
+                <input type="email" name="fields[email]" class="field" placeholder="Your email" required>
+                <button class="btn btn-primary" type="submit">Subscribe</button>
+                <p class="newsletter-note">You&rsquo;ll receive a confirmation email to opt in.<br>Powered by MailerLite.</p>
+              </form>
+
+              <h2 id="feedback">Быстрая обратная связь</h2>
+              <div class="callout">
+                <strong>Было полезно?</strong>
+                <p>Короткий сигнал помогает нам выбирать темы для следующих материалов.</p>
+
+                <div class="hero-actions">
+                  <button class="btn btn-primary" type="button" data-vote="like">
+                    👍 Полезно <span class="count" data-count="like">—</span>
+                  </button>
+
+                  <button class="btn btn-outline" type="button" data-vote="dislike">
+                    👎 Не очень <span class="count" data-count="dislike">—</span>
+                  </button>
+                </div>
+
+                <p class="sidebar-text">Без комментариев и аккаунтов.</p>
+              </div>
+
+              <h2 id="related-posts">Похожие материалы</h2>
+              <div class="callout">
+                <strong>Что ещё посмотреть:</strong>
+                <p>Больше практических заметок об IoT, low-code и архитектуре ERP.</p>
+                <ul>
+                  <li><a href="/posts/post18-iot-for-business.html">IoT для бизнеса: где он зарабатывает, а где жжёт бюджет ↗</a></li>
+                  <li><a href="/posts/post16-erp-architecture-doesnt-break-compare-1c-sap-dynamics-odoo.html">ERP, которая не ломается от изменений: разбор архитектуры ↗</a></li>
+                </ul>
+              </div>
+            </section>
+
+            <div class="post-nav-links">
+              <a class="back" href="/#posts" style="margin-left: 0;">← Ко всем статьям</a>
+              <a class="back" href="/#categories" style="margin-right: 0;">Все категории →</a>
+            </div>
+          </article>
+
+          <aside class="sidebar">
+            <section class="sidebar-block">
+              <h3 class="sidebar-title" id="topic-question-title">Предложить тему</h3>
+              <p class="sidebar-text">
+                Есть вопрос или идея для следующей статьи?
+                <a class="post-read" href="mailto:info@devlab.blog?subject=Вопрос%20или%20идея%20темы%20для%20DevLab%20Blog">
+                  Напишите нам →
+                </a>
+              </p>
+            </section>
+
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">Об этом блоге</h3>
+              <p class="sidebar-text">
+                DevLab Blog — про концепции open-source ERP, модульные бизнес-системы и low-code автоматизацию.
+                Пишем об архитектурных паттернах, стратегиях интеграции и уроках реальных внедрений.
+              </p>
+            </section>
+
+            <section class="sidebar-block">
+              <h3 class="sidebar-title">Что ещё посмотреть</h3>
+              <p class="sidebar-text">
+                Вернитесь на главную или выберите по категории:
+              </p>
+              <ul>
+                <li><a href="/">Все статьи</a></li>
+                <li><a href="/#categories">По категориям</a></li>
+                <li><a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт DevLab</a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrapper footer-grid">
+        <div>
+          <div class="footer-links">
+            <a href="/">Статьи</a>
+            <a href="/#categories">Категории</a>
+            <a href="/#about">О блоге</a>
+            <a href="https://devlab.blog" target="_blank" rel="noopener noreferrer">Главный сайт</a>
+          </div>
+          <p class="footer-meta">
+            DevLab Blog — заметки об open-source ERP, модульных архитектурах и экспериментах с автоматизацией.
+          </p>
+        </div>
+        <div class="footer-meta">
+          <p>&copy; <span id="year"></span> DevLab Blog</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+<script data-ml="ml-newsletter-handler">
+(function(){
+  document.querySelectorAll('form.newsletter-form').forEach(function(f){
+    if (f.dataset.mlBound) return; f.dataset.mlBound = '1';
+    f.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = f.querySelector('button[type=submit]');
+      if (btn) btn.disabled = true;
+      fetch(f.action, {method:'POST', body:new URLSearchParams(new FormData(f))})
+        .then(function(r){ return r.json(); })
+        .then(function(d){
+          if (d && d.success) { window.location.href = location.origin + '/thank-you.html'; }
+          else { if (btn) btn.disabled = false; alert('Subscription error — please try again.'); }
+        })
+        .catch(function(){ if (btn) btn.disabled = false; alert('Network error — please try again.'); });
+    });
+  });
+})();
+</script>
+</body>
+</html>
